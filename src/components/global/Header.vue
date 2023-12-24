@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+const showRoutes: boolean = false
 </script>
 
 <template>
     <header>
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+        <div id="container">
+            <img id="cyberdyne-logo" alt="Cyberdine logo" src="/images/logos/cyberdyne-logo-white.png">
+            <h1 id="header-title">TECHNICAL SUPPORT</h1>
+            <button id="menu-button-mobile" type="button"><img id="menu-icon" src="/images/logos/mobile-menu-icon.png" alt="menu icon"></button>
+            <button id="menu-button-desktop">MENU</button>
+        </div>
 
-        <div class="wrapper">
+
+        <div class="wrapper" v-if="showRoutes">
             <nav>
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/tickets">Tickets</RouterLink>
@@ -17,64 +24,88 @@ import { RouterLink } from 'vue-router'
 
 <style scoped lang="scss">
 header {
-    line-height: 1.5;
-    max-height: 100vh;
+    height: 10vh;
+    width: 100vw;
+    background-color: $base-grey;
 }
 
-.logo {
-    display: block;
-    margin: 0 auto 2rem;
-}
-
-nav {
+#container {
+    height: 100%;
     width: 100%;
-    font-size: 12px;
-    text-align: center;
-    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
 }
 
-nav a.router-link-exact-active {
-    color: var(--color-text);
+#cyberdyne-logo {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
-nav a.router-link-exact-active:hover {
-    background-color: transparent;
+#header-title {
+    display: none;
 }
 
-nav a {
-    display: inline-block;
-    padding: 0 1rem;
-    border-left: 1px solid var(--color-border);
+#menu-button-mobile {
+    height: 80%;
+    width: 70px;
+    margin-right: 3%;
 }
 
-nav a:first-of-type {
-    border: 0;
+#menu-button-desktop {
+    display: none;
 }
 
-@media (min-width: 1024px) {
-    header {
-        display: flex;
-        place-items: center;
-        padding-right: calc(var(--section-gap) / 2);
+#menu-icon {
+    height: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+    #header-title {
+        display: block;
     }
 
-    .logo {
-        margin: 0 2rem 0 0;
+    #container {
+        justify-content: space-between;
     }
 
-    header .wrapper {
-        display: flex;
-        place-items: flex-start;
-        flex-wrap: wrap;
+    #cyberdyne-logo {
+        height: 100%;
+        position: relative;
+        left: auto;
+        transform: translate(0);
+        margin-left: 3%;
     }
 
-    nav {
-        text-align: left;
-        margin-left: -1rem;
-        font-size: 1rem;
+    #header-title {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        display: block;
+        font-family: "Cyberdyne";
+        font-size: 1.8vmax;
+        color: white;
+    }
 
-        padding: 1rem 0;
-        margin-top: 1rem;
+    #menu-button-mobile {
+        display: none;
+    }
+
+    #menu-button-desktop {
+        display: block;
+        width: 80px;
+        height: 70%;
+        font-family: "Cyberdyne";
+        font-size: 1.5vmax;
+        color: white;
+        margin-right: 2%;
+    }
+
+    #menu-icon {
+        height: 50%;
     }
 }
 </style>

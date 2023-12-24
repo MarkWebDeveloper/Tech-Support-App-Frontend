@@ -2,6 +2,11 @@
 
 // The fonts and variables are referenced in the vite.config.ts file.
 
+body, html {
+    height: 100vh;
+    width: 100vw;
+}
+
 a {
     text-decoration: none;
 }
