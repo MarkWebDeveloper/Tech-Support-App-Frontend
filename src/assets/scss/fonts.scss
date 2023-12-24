@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'VT323';
+    src: url('/fonts/vt323/VT323-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: "Cyberdyne";
+    font-weight: 400;
+    font-style: italic;
+    font-display: auto;
+    unicode-range: U+000-5FF;
+    src: url("fonts/cyberdyne/cyberdyneital.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: "Cyberdyne Condensed";
+    font-weight: 400;
+    font-style: italic;
+    font-display: auto;
+    unicode-range: U+000-5FF;
+    src: url("/fonts/cyberdyne/cyberdynecondital.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: "Cyberdyne Halftone";
+    font-weight: 400;
+    font-style: italic;
+    font-display: auto;
+    unicode-range: U+000-5FF;
+    src: url("/fonts/cyberdyne/cyberdynehalfital.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: "Cyberdyne Expanded";
+    font-weight: 400;
+    font-style: italic;
+    font-display: auto;
+    unicode-range: U+000-5FF;
+    src: url("/fonts/cyberdyne/cyberdynexpandital.ttf") format("ttf");
+}

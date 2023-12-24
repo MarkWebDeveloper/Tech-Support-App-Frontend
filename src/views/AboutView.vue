@@ -4,7 +4,13 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+
+h1 {
+    font-family: 'Cyberdyne';
+    color: $text-green;
+  }
+
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
