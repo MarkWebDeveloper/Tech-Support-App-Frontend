@@ -39,7 +39,7 @@ header {
 }
 
 #cyberdyne-logo {
-    height: 100%;
+    height: 90%;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
