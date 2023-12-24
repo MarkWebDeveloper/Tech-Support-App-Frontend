@@ -8,7 +8,7 @@
         <input id="username-input" type="text">
 
         <h3>PASSWORD</h3>
-        <input id="password-input" type="text">
+        <input id="password-input" type="password">
     </form>
 </template>
 
@@ -39,4 +39,5 @@ input {
     margin-bottom: 10%;
     height: 10%;
 }
+
 </style>
