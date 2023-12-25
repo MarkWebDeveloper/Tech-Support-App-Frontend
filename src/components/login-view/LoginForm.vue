@@ -3,12 +3,14 @@
 </script>
 
 <template>
-    <form action="submit">
+    <form>
         <h3>USERNAME</h3>
         <input id="username-input" type="text">
 
         <h3>PASSWORD</h3>
         <input id="password-input" type="password">
+
+        <button id="submit-button">SUBMIT</button>
     </form>
 </template>
 
@@ -28,7 +30,7 @@ h3 {
     font-style: normal;
     font-size: 2vmax;
     color: white;
-    margin: 0% 0 10% 0;
+    margin: 0% 0 5% 0;
 }
 
 input {
@@ -38,6 +40,17 @@ input {
     color: $text-green;
     margin-bottom: 10%;
     height: 10%;
+}
+
+button {
+    background-color: white;
+    font-family: 'Cyberdyne Condensed';
+    font-style: italic;
+    padding: 5px 15px 5px 15px;
+    margin-left: auto;
+    margin-right: 5%;
+    margin-top: auto;
+    margin-bottom: 10%;
 }
 
 </style>
