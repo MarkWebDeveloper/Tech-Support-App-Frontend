@@ -10,6 +10,11 @@ import LoginForm from './../components/login-view/LoginForm.vue'
 
     <LoginForm />
 
+    <div id="text-container">
+        <p id="greetings">GREETINGS, HUMAN:</p>    
+        <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>    
+    </div>
+
   </main>
 </template>
 
@@ -41,5 +46,23 @@ main {
 
 #terminator-gif {
   height: 20%;
+}
+
+#text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    text-align: center;
+}
+
+p {
+  font-family: "Cyberdyne";
+  font-size: 2vmax;
+  color: white;
+}
+
+#greetings {
+  margin-bottom: 10%;
 }
 </style>

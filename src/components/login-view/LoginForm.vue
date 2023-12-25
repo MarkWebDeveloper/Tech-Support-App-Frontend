@@ -12,6 +12,7 @@
 
         <button id="submit-button">SUBMIT</button>
     </form>
+    
 </template>
 
 <style scoped lang="scss">
@@ -19,10 +20,11 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 40%;
+    height: 42%;
     width: 90%;
     background-color: $base-grey;
     padding-top: 10%;
+    margin-bottom: 8%;
 }
 
 h3 {
@@ -30,7 +32,7 @@ h3 {
     font-style: normal;
     font-size: 2vmax;
     color: white;
-    margin: 0% 0 5% 0;
+    margin-bottom: 5%;
 }
 
 input {
@@ -38,7 +40,7 @@ input {
     background-color: black;
     font-family: 'VT323', monospace;
     color: $text-green;
-    margin-bottom: 10%;
+    margin-bottom: 15%;
     height: 10%;
 }
 
@@ -49,8 +51,6 @@ button {
     padding: 5px 15px 5px 15px;
     margin-left: auto;
     margin-right: 5%;
-    margin-top: auto;
-    margin-bottom: 10%;
 }
 
 </style>
