@@ -7,7 +7,7 @@
         <label id="username-label" for="username-input">USERNAME</label>
         <input id="username-input" type="text">
 
-        <label id="password-label" for="username-input">PASSWORD</label>
+        <label id="password-label" for="password-input">PASSWORD</label>
         <input id="password-input" type="password">
 
         <button id="submit-button">SUBMIT</button>
@@ -41,6 +41,7 @@ input {
     color: $text-green;
     margin-bottom: 15%;
     height: 10%;
+    text-align: center;
 }
 
 button {

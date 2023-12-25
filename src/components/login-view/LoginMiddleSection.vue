@@ -66,7 +66,7 @@ p {
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
     }
 
@@ -78,7 +78,7 @@ p {
     #text-container {
         width: 15%;
         text-align: center;
-        padding-left: 2.5%;
+        // padding-left: 2.5%;
     }
 
     p {
