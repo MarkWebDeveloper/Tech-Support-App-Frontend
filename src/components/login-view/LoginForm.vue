@@ -4,15 +4,14 @@
 
 <template>
     <form>
-        <h3>USERNAME</h3>
+        <label id="username-label" for="username-input">USERNAME</label>
         <input id="username-input" type="text">
 
-        <h3>PASSWORD</h3>
+        <label id="password-label" for="username-input">PASSWORD</label>
         <input id="password-input" type="password">
 
         <button id="submit-button">SUBMIT</button>
     </form>
-    
 </template>
 
 <style scoped lang="scss">
@@ -20,14 +19,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 42%;
-    width: 90%;
+    height: 37vh;
+    width: 90vw;
     background-color: $base-grey;
     padding-top: 10%;
     margin-bottom: 8%;
 }
 
-h3 {
+label {
     font-family: "Cyberdyne Halftone";
     font-style: normal;
     font-size: 2vmax;
@@ -53,4 +52,34 @@ button {
     margin-right: 5%;
 }
 
+@media only screen and (min-width: 768px) {
+    form {
+        padding-top: 0%;
+        height: 60vh;
+        width: 60vw;
+        margin-bottom: 0%;
+    }
+
+    #username-label {
+        margin-top: 7%;
+    }
+
+    label {
+        font-size: 1.3vmax;
+        margin-bottom: 2%;
+    }
+
+    input {
+        width: 80%;
+        margin-bottom: 7%;
+        height: 9%;
+    }
+
+    button {
+        padding: 5px 15px 5px 15px;
+        margin-left: auto;
+        margin-right: 10%;
+        font-size: 1vmax;
+    }
+}
 </style>

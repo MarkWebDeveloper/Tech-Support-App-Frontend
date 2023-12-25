@@ -1,19 +1,28 @@
 <script setup lang="ts">
+import LoginMobileTopSection from '@/components/login-view/LoginMobileTopSection.vue';
 import LoginForm from './../components/login-view/LoginForm.vue'
+import LoginMiddleSection from '@/components/login-view/LoginMiddleSection.vue';
 </script>
 
 <template>
   <main>
-    <h1 id="page-title">TECHNICAL SUPPORT</h1>
-    <img id="terminator-gif" src="/images/gif/wayne-dalton-wd-terminator-32c-2019-anim.gif" alt="t-800 image">
-    <h2 id="view-title">LOGIN</h2>
 
-    <LoginForm />
+    <LoginMobileTopSection id="mobile-top-section" />
 
-    <div id="text-container">
-        <p id="greetings">GREETINGS, HUMAN:</p>    
-        <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>    
-    </div>
+    <LoginMiddleSection />
+
+    <!-- <h2 id="view-title">LOGIN</h2>
+
+    <div id="center-section-container">
+
+      <LoginForm />
+
+      <div id="text-container">
+        <p id="greetings">GREETINGS, HUMAN:</p>
+        <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>
+      </div>
+
+    </div> -->
 
   </main>
 </template>
@@ -28,41 +37,63 @@ main {
   align-items: center;
 }
 
-#page-title {
-  display: block;
-  font-family: "Cyberdyne";
-  font-size: 2.2vmax;
-  color: white;
-  margin: 5% 0 5% 0;
+@media only screen and (min-width: 768px) {
+    #mobile-top-section {
+        display: none;
+    }
 }
 
-#view-title {
-  display: block;
-  font-family: "Cyberdyne";
-  font-size: 2.2vmax;
-  color: white;
-  margin: 5% 0 5% 0;
-}
+// #view-title {
+//   display: none;
+// }
 
-#terminator-gif {
-  height: 20%;
-}
+// #text-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 70%;
+//   text-align: center;
+// }
 
-#text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-    text-align: center;
-}
+// p {
+//   font-family: "Cyberdyne";
+//   font-size: 2vmax;
+//   color: white;
+// }
 
-p {
-  font-family: "Cyberdyne";
-  font-size: 2vmax;
-  color: white;
-}
+// #greetings {
+//   margin-bottom: 10%;
+// }
 
-#greetings {
-  margin-bottom: 10%;
-}
+// @media only screen and (min-width: 768px) {
+//   #mobile-top-section {
+//     display: none;
+//   }
+
+//   #view-title {
+//     display: block;
+//     font-family: "Cyberdyne";
+//     font-size: 1.3vmax;
+//     color: white;
+//     margin: 5% 0 2% 0;
+//   }
+
+//   #text-container {
+//     display: none;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 70%;
+//     text-align: center;
+//   }
+
+//   p {
+//     font-family: "Cyberdyne";
+//     font-size: 2vmax;
+//     color: white;
+//   }
+
+//   #greetings {
+//     margin-bottom: 10%;
+//   }
+// }
 </style>

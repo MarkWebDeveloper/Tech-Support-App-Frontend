@@ -1,0 +1,92 @@
+<script setup lang="ts">
+import LoginForm from './LoginForm.vue';
+</script>
+
+<template>
+    <h2 id="view-title">LOGIN</h2>
+
+    <div id="center-section-container">
+
+        <img id="terminator-gif" src="/images/gif/wayne-dalton-wd-terminator-32c-2019-anim.gif" alt="t-800 image">
+
+        <LoginForm />
+
+        <div id="text-container">
+            <p id="greetings">GREETINGS, HUMAN:</p>
+            <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>
+        </div>
+
+    </div>
+</template>
+
+<style scoped lang="scss">
+#view-title {
+    display: none;
+}
+
+#center-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#terminator-gif {
+    display: none;
+}
+
+#text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    text-align: center;
+}
+
+p {
+    font-family: "Cyberdyne";
+    font-size: 2vmax;
+    color: white;
+}
+
+#greetings {
+    margin-bottom: 10%;
+}
+
+@media only screen and (min-width: 768px) {
+
+    #view-title {
+        display: block;
+        font-family: "Cyberdyne";
+        font-size: 1.3vmax;
+        color: white;
+        margin: 5% 0 2% 0;
+    }
+
+    #center-section-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #terminator-gif {
+        display: block;
+        width: 15%;
+    }
+
+    #text-container {
+        width: 15%;
+        text-align: center;
+        padding-left: 2.5%;
+    }
+
+    p {
+        font-size: 1.2vmax;
+    }
+
+    #greetings {
+        margin-bottom: 10%;
+    }
+}
+</style>
