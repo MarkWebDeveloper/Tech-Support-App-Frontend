@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import LoginMobileTopSection from '@/components/login-view/LoginMobileTopSection.vue';
-import LoginForm from './../components/login-view/LoginForm.vue'
 import LoginMiddleSection from '@/components/login-view/LoginMiddleSection.vue';
+import { useUsersStore } from '@/stores/usersStore';
+
+const store = useUsersStore()
+
+async function printUsers() {
+  const users = await store.users
+  return console.log(users)
+}
+
+printUsers()
 </script>
 
 <template>
@@ -10,19 +19,6 @@ import LoginMiddleSection from '@/components/login-view/LoginMiddleSection.vue';
     <LoginMobileTopSection id="mobile-top-section" />
 
     <LoginMiddleSection />
-
-    <!-- <h2 id="view-title">LOGIN</h2>
-
-    <div id="center-section-container">
-
-      <LoginForm />
-
-      <div id="text-container">
-        <p id="greetings">GREETINGS, HUMAN:</p>
-        <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>
-      </div>
-
-    </div> -->
 
   </main>
 </template>
