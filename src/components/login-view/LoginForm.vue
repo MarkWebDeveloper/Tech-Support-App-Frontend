@@ -4,11 +4,15 @@
 
 <template>
     <form>
-        <label id="username-label" for="username-input">USERNAME</label>
-        <input id="username-input" type="text">
+        <div class="container">
+            <label id="username-label" for="username-input">USERNAME</label>
+            <input id="username-input" type="text">
+        </div>
 
-        <label id="password-label" for="password-input">PASSWORD</label>
-        <input id="password-input" type="password">
+        <div class="container">
+            <label id="password-label" for="password-input">PASSWORD</label>
+            <input id="password-input" type="password">
+        </div>
 
         <button id="submit-button">SUBMIT</button>
     </form>
@@ -19,11 +23,20 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     height: 37vh;
     width: 90vw;
     background-color: $base-grey;
-    padding-top: 10%;
     margin-bottom: 8%;
+}
+
+.container {
+    width: 90%;
+    height: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 label {
@@ -31,16 +44,14 @@ label {
     font-style: normal;
     font-size: 2vmax;
     color: white;
-    margin-bottom: 5%;
 }
 
 input {
-    width: 90%;
+    width: 100%;
     background-color: black;
     font-family: 'VT323', monospace;
     color: $text-green;
-    margin-bottom: 15%;
-    height: 10%;
+    height: 3vmax;
     text-align: center;
 }
 
@@ -55,25 +66,18 @@ button {
 
 @media only screen and (min-width: 768px) {
     form {
-        padding-top: 0%;
-        height: 60vh;
+        height: 100%;
         width: 60vw;
         margin-bottom: 0%;
     }
 
-    #username-label {
-        margin-top: 7%;
-    }
-
     label {
         font-size: 1.3vmax;
-        margin-bottom: 2%;
     }
 
     input {
         width: 80%;
-        margin-bottom: 7%;
-        height: 9%;
+        height: 2vmax;
     }
 
     button {
