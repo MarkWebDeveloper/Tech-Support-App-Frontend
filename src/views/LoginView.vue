@@ -1,16 +1,7 @@
 <script setup lang="ts">
 import LoginMobileTopSection from '@/components/login-view/LoginMobileTopSection.vue';
 import LoginMiddleSection from '@/components/login-view/LoginMiddleSection.vue';
-import { useUsersStore } from '@/stores/usersStore';
 
-const store = useUsersStore()
-
-async function printUsers() {
-  const users = await store.users
-  return console.log(users)
-}
-
-printUsers()
 </script>
 
 <template>

@@ -3,25 +3,24 @@ import LoginForm from './LoginForm.vue';
 </script>
 
 <template>
+    
+    <h2 id="view-title">LOGIN</h2>
 
-        <div id="center-section-container">
+    <div id="center-section-container">
 
-            <h2 id="view-title">LOGIN</h2>
+        <img id="terminator-gif" src="/images/gif/wayne-dalton-wd-terminator-32c-2019-anim.gif" alt="t-800 image">
 
-            <img id="terminator-gif" src="/images/gif/wayne-dalton-wd-terminator-32c-2019-anim.gif" alt="t-800 image">
+        <LoginForm />
 
-            <LoginForm />
-
-            <div id="text-container">
-                <p id="greetings">GREETINGS, HUMAN:</p>
-                <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>
-            </div>
-
+        <div id="text-container">
+            <p id="greetings">GREETINGS, HUMAN:</p>
+            <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>
         </div>
+
+    </div>
 </template>
 
 <style scoped lang="scss">
-
 #view-title {
     display: none;
 }
