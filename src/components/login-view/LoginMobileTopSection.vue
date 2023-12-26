@@ -12,11 +12,12 @@
 
 <style scoped lang="scss">
 section {
+    height: 35%;
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 #page-title {
@@ -24,7 +25,6 @@ section {
     font-family: "Cyberdyne";
     font-size: 2.2vmax;
     color: white;
-    margin: 5% 0 5% 0;
 }
 
 #terminator-gif {
@@ -36,6 +36,5 @@ section {
     font-family: "Cyberdyne";
     font-size: 2.2vmax;
     color: white;
-    margin: 5% 0 5% 0;
 }
 </style>

@@ -27,7 +27,6 @@ form {
     height: 37vh;
     width: 90vw;
     background-color: $base-grey;
-    margin-bottom: 8%;
 }
 
 .container {
@@ -51,7 +50,7 @@ input {
     background-color: black;
     font-family: 'VT323', monospace;
     color: $text-green;
-    height: 3vmax;
+    height: 3.5vh;
     text-align: center;
 }
 
@@ -59,6 +58,7 @@ button {
     background-color: white;
     font-family: 'Cyberdyne Condensed';
     font-style: italic;
+    font-size: 2vmax;
     padding: 5px 15px 5px 15px;
     margin-left: auto;
     margin-right: 5%;
@@ -69,6 +69,11 @@ button {
         height: 100%;
         width: 60vw;
         margin-bottom: 0%;
+    }
+
+    .container {
+        width: 100%;
+        height: 15%;
     }
 
     label {

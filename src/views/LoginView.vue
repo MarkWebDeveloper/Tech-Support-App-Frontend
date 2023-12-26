@@ -35,6 +35,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 768px) {
