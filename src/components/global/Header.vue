@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import HeaderMenu from './HeaderMenu.vue';
 const showRoutes: boolean = false
 let showButton: boolean = false
 
@@ -25,6 +26,7 @@ checkIfAuthenticated()
             <button id="menu-button-desktop" v-if="showButton">MENU</button>
         </div>
 
+        <HeaderMenu />
 
         <div class="wrapper" v-if="showRoutes">
             <nav>
