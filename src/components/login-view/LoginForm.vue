@@ -24,19 +24,21 @@ function redirectToPending() {
 
 function checkUser() {
 
-    for (let index = 0; index < store.users.length; index++) {
-        if (store.users[index].username == username.value && store.users[index].password == password.value) {
-            isAuthenticated.value = true
-            localStorage.setItem('isAuthenticated', 'true')
-            if (store.users[index].type == false) {
-                redirectToTickets()
-            } else {
-                redirectToPending()
-            }
+    let searchedUser = store.users.find(user => user.username == username.value && user.password == password.value)
+    if (searchedUser == undefined) {
+        alert("Incorrect email or password")
+    } else {
+        let userIndex = store.users.indexOf(searchedUser)
+        console.log(userIndex)
+        isAuthenticated.value = true
+        localStorage.setItem('isAuthenticated', 'true')
+        if (store.users[userIndex].type == false) {
+            redirectToTickets()
         } else {
-            alert("Incorrect email or password")
+            redirectToPending()
         }
     }
+
 }
 </script>
 
