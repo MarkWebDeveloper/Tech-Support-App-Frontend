@@ -21,7 +21,22 @@ const router = createRouter({
       path: '/pending',
       name: 'pending-tickets',
       component: () => import('../views/PendingTicketsView.vue')
-    }
+    },
+    {
+      path: '/create',
+      name: 'create-ticket',
+      component: () => import('../views/NewTicketView.vue')
+    },
+    {
+      path: '/edit',
+      name: 'edit-tickets',
+      component: () => import('../views/EditTicketView.vue')
+    },
+    {
+      path: '/resolved',
+      name: 'resolved-tickets',
+      component: () => import('../views/ResolvedTicketView.vue')
+    },
   ]
 })
 

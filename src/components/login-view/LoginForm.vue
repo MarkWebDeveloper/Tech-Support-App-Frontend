@@ -29,7 +29,7 @@ function checkUser() {
         alert("Incorrect email or password")
     } else {
         let userIndex = store.users.indexOf(searchedUser)
-        console.log(userIndex)
+        store.activeUserIndex = userIndex;
         isAuthenticated.value = true
         localStorage.setItem('isAuthenticated', 'true')
         if (store.users[userIndex].type == false) {

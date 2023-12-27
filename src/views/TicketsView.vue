@@ -1,3 +1,7 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
   <div class="about">
     <h1>This is a tickets page</h1>
@@ -10,12 +14,4 @@ h1 {
     font-family: 'Cyberdyne';
     color: $text-green;
   }
-
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
 </style>

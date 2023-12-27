@@ -4,7 +4,7 @@
 
 <template>
   <div class="about">
-    <h1>This is a pending tickets page</h1>
+    <h1>This is new ticket page</h1>
   </div>
 </template>
   

@@ -1,16 +1,25 @@
 <script setup lang="ts">
+import { useUsersStore } from '@/stores/usersStore';
+import { useHeaderStore } from '@/stores/headerStore';
+
+const usersStore = useUsersStore()
+const headerStore = useHeaderStore();
 
 </script>
 
 <template>
-    <div id="menu-container">
+    <div id="menu-container" v-if="!headerStore.menuIsHidden">
         <div id="user-container">
             <img id="user-type-image" src="/images/logos/technician-icon-white.png" alt="technician icon">
             <p>Mark Kil</p>
         </div>
-        <button id="create-ticket-button" class="menu-button" type="button">CREATE TICKET</button>
-        <button id="edit-ticket-button" class="menu-button" type="button">EDIT TICKET</button>
+        <button id="tickets-button" class="menu-button" type="button" v-if="headerStore.isUser">TICKETS</button>
+        <button id="create-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser">CREATE TICKET</button>
+        <button id="edit-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser">EDIT TICKET</button>
+        <button id="pending-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser">PENDING TICKETS</button>
+        <button id="resolved-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser">RESOLVED TICKETS</button>
         <button id="log-out-button" class="menu-button" type="button">LOG OUT</button>
+
     </div>
 </template>
 

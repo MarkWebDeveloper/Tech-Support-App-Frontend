@@ -10,11 +10,12 @@ export const useUsersStore = defineStore('users', () => {
 
   let users: { id: number; name: string; username: string; password: string; type: boolean; }[] = reactive([]); 
   let isLoaded = ref(false)
+  let activeUserIndex = ref();
 
   async function setUsers(this: any) {
     this.users = await service.index()
     isLoaded.value = true
   }
 
-  return { users, isLoaded, setUsers }
+  return { users, isLoaded, setUsers, activeUserIndex }
 })
