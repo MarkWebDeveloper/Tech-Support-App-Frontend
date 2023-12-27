@@ -12,7 +12,7 @@ const headerStore = useHeaderStore()
         <div id="user-container">
             <img id="technician-image" src="/images/logos/technician-icon-white.png" alt="technician icon" v-if="!headerStore.isUser">
             <img id="user-image" src="/images/logos/user-icon-white.png" alt="user icon" v-if="headerStore.isUser">
-            <p>Mark Kil</p>
+            <p id="user-name">{{ userStore.users[userStore.activeUserIndex].name }}</p>
         </div>
         <button id="tickets-button" class="menu-button" type="button" v-if="headerStore.isUser" @click.prevent="headerStore.redirectToTickets()">TICKETS</button>
         <button id="create-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser" @click.prevent="headerStore.redirectToCreate()">CREATE TICKET</button>
