@@ -1,17 +1,41 @@
 <script setup lang="ts">
+import { useUsersStore } from '@/stores/usersStore';
+import { ref } from 'vue';
 
+const store = useUsersStore()
+
+const username = ref('')
+const password = ref('')
+const isAuthenticated = ref(false)
+
+
+function checkUser() {
+
+    for (let index = 0; index < store.users.length; index++) {
+        if (store.users[index].username == username.value && store.users[index].password == password.value) {
+            isAuthenticated.value = true
+        } else {
+            alert("Incorrect email or password")
+        }
+    }
+}
+
+// function redirectToFavourites() {
+//     const redirectPath = route.query.redirect || '/favourites'
+//     router.push(redirectPath)
+// }
 </script>
 
 <template>
-    <form>
+    <form @submit.prevent="checkUser()">
         <div class="container">
             <label id="username-label" for="username-input">USERNAME</label>
-            <input id="username-input" type="text">
+            <input id="username-input" type="text" v-model="username">
         </div>
 
         <div class="container">
             <label id="password-label" for="password-input">PASSWORD</label>
-            <input id="password-input" type="password">
+            <input id="password-input" type="password" v-model="password">
         </div>
 
         <button id="submit-button">SUBMIT</button>
