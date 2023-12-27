@@ -10,6 +10,7 @@ export const useUsersStore = defineStore('users', () => {
 
   let users: { id: number; name: string; username: string; password: string; type: boolean; }[] = reactive([]); 
   let isLoaded = ref(false)
+  const isAuthenticated = ref(false)
   let activeUserIndex = ref();
 
   async function setUsers(this: any) {
@@ -17,5 +18,5 @@ export const useUsersStore = defineStore('users', () => {
     isLoaded.value = true
   }
 
-  return { users, isLoaded, setUsers, activeUserIndex }
+  return { users, isLoaded, setUsers, isAuthenticated, activeUserIndex }
 })

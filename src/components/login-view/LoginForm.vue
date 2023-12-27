@@ -10,7 +10,6 @@ const router = useRouter()
 
 const username = ref('')
 const password = ref('')
-const isAuthenticated = ref(false)
 
 function redirectToTickets() {
     const redirectPath: any = route.query.redirect || '/tickets'
@@ -29,8 +28,8 @@ function checkUser() {
         alert("Incorrect email or password")
     } else {
         let userIndex = store.users.indexOf(searchedUser)
-        store.activeUserIndex = userIndex;
-        isAuthenticated.value = true
+        store.activeUserIndex = userIndex
+        store.isAuthenticated = true
         localStorage.setItem('isAuthenticated', 'true')
         if (store.users[userIndex].type == false) {
             redirectToTickets()

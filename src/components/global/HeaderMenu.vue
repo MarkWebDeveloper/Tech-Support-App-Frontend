@@ -2,8 +2,8 @@
 import { useUsersStore } from '@/stores/usersStore';
 import { useHeaderStore } from '@/stores/headerStore';
 
-const usersStore = useUsersStore()
-const headerStore = useHeaderStore();
+const userStore = useUsersStore() 
+const headerStore = useHeaderStore()
 
 </script>
 
@@ -13,11 +13,11 @@ const headerStore = useHeaderStore();
             <img id="user-type-image" src="/images/logos/technician-icon-white.png" alt="technician icon">
             <p>Mark Kil</p>
         </div>
-        <button id="tickets-button" class="menu-button" type="button" v-if="headerStore.isUser">TICKETS</button>
-        <button id="create-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser">CREATE TICKET</button>
-        <button id="edit-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser">EDIT TICKET</button>
-        <button id="pending-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser">PENDING TICKETS</button>
-        <button id="resolved-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser">RESOLVED TICKETS</button>
+        <button id="tickets-button" class="menu-button" type="button" v-if="headerStore.isUser" @click.prevent="headerStore.redirectToTickets()">TICKETS</button>
+        <button id="create-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser" @click.prevent="headerStore.redirectToCreate()">CREATE TICKET</button>
+        <button id="edit-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser" @click.prevent="headerStore.redirectToEdit()">EDIT TICKET</button>
+        <button id="pending-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser" @click.prevent="headerStore.redirectToPending()">PENDING TICKETS</button>
+        <button id="resolved-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser" @click.prevent="headerStore.redirectToResolved()">RESOLVED TICKETS</button>
         <button id="log-out-button" class="menu-button" type="button">LOG OUT</button>
 
     </div>

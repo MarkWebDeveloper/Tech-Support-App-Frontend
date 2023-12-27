@@ -1,5 +1,21 @@
 <script setup lang="ts">
+import { useHeaderStore } from '@/stores/headerStore';
+import { useUsersStore } from '@/stores/usersStore';
 
+const userStore = useUsersStore()
+const headerStore = useHeaderStore()
+
+function checkIfAuthenticated() {
+    if(userStore.isAuthenticated) {
+        if(userStore.isAuthenticated == true) {
+            headerStore.showButton = true
+        } else {
+            headerStore.showButton = false
+        }
+    }
+}
+
+checkIfAuthenticated()
 </script>
 
 <template>
