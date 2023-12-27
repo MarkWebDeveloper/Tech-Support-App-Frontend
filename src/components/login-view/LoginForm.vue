@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { useUsersStore } from '@/stores/usersStore';
 import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const store = useUsersStore()
+
+const route = useRoute()
+const router = useRouter()
 
 const username = ref('')
 const password = ref('')
 const isAuthenticated = ref(false)
+
+function redirectToTickets() {
+    const redirectPath: any = route.query.redirect || '/tickets'
+    router.push(redirectPath)
+}
 
 
 function checkUser() {
@@ -14,16 +23,13 @@ function checkUser() {
     for (let index = 0; index < store.users.length; index++) {
         if (store.users[index].username == username.value && store.users[index].password == password.value) {
             isAuthenticated.value = true
+            localStorage.setItem('isAuthenticated', 'true')
+            redirectToTickets()
         } else {
             alert("Incorrect email or password")
         }
     }
 }
-
-// function redirectToFavourites() {
-//     const redirectPath = route.query.redirect || '/favourites'
-//     router.push(redirectPath)
-// }
 </script>
 
 <template>

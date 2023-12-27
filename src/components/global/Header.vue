@@ -1,6 +1,19 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 const showRoutes: boolean = false
+let showButton: boolean = false
+
+function checkIfAuthenticated() {
+    if(localStorage.getItem('isAuthenticated')) {
+        if(localStorage.getItem('isAuthenticated') == 'true') {
+            showButton = true
+        } else {
+            showButton = false
+        }
+    }
+}
+
+checkIfAuthenticated()
 </script>
 
 <template>
@@ -8,8 +21,8 @@ const showRoutes: boolean = false
         <div id="container">
             <img id="cyberdyne-logo" alt="Cyberdine logo" src="/images/logos/cyberdyne-logo-white.png">
             <h1 id="header-title">TECHNICAL SUPPORT</h1>
-            <button id="menu-button-mobile" type="button"><img id="menu-icon" src="/images/logos/mobile-menu-icon.png" alt="menu icon"></button>
-            <button id="menu-button-desktop">MENU</button>
+            <button id="menu-button-mobile" type="button" v-if="showButton"><img id="menu-icon" src="/images/logos/mobile-menu-icon.png" alt="menu icon"></button>
+            <button id="menu-button-desktop" v-if="showButton">MENU</button>
         </div>
 
 
