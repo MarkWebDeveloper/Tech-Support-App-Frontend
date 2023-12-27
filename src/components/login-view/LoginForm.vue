@@ -17,6 +17,10 @@ function redirectToTickets() {
     router.push(redirectPath)
 }
 
+function redirectToPending() {
+    const redirectPath: any = route.query.redirect || '/pending'
+    router.push(redirectPath)
+}
 
 function checkUser() {
 
@@ -24,7 +28,11 @@ function checkUser() {
         if (store.users[index].username == username.value && store.users[index].password == password.value) {
             isAuthenticated.value = true
             localStorage.setItem('isAuthenticated', 'true')
-            redirectToTickets()
+            if (store.users[index].type == false) {
+                redirectToTickets()
+            } else {
+                redirectToPending()
+            }
         } else {
             alert("Incorrect email or password")
         }
