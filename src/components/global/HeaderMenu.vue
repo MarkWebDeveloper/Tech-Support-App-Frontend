@@ -26,6 +26,9 @@
     background-color: $base-grey;
     z-index: 99;
     border-top: 2px solid black;
+    border-left: 2px ridge $base-red;
+    border-right: 2px ridge $base-red;
+    border-bottom: 2px ridge $base-red;
 }
 
 #user-container {
@@ -44,10 +47,38 @@ p {
     font-family: 'Cyberdyne Condensed';
     font-style: italic;
     color: white;
+    font-size: 1.6vmax;
 }
 
 button {
     font-family: 'Cyberdyne';
     color: white;
+    font-size: 1.8vmax;
+}
+
+@media only screen and (min-width: 768px) {
+    #menu-container {
+    margin-left: auto;
+    width: 20%;
+    height: 25vh;
+}
+
+img {
+    height: 20px;
+    margin-right: 2%;
+}
+
+p {
+    font-family: 'Cyberdyne Condensed';
+    font-style: italic;
+    color: white;
+    font-size: 1vmax;
+}
+
+button {
+    font-family: 'Cyberdyne';
+    color: white;
+    font-size: 1.2vmax;
+}
 }
 </style>
