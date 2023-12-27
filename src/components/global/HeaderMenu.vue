@@ -18,7 +18,7 @@ const headerStore = useHeaderStore()
         <button id="edit-ticket-button" class="menu-button" type="button" v-if="headerStore.isUser" @click.prevent="headerStore.redirectToEdit()">EDIT TICKET</button>
         <button id="pending-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser" @click.prevent="headerStore.redirectToPending()">PENDING TICKETS</button>
         <button id="resolved-tickets-button" class="menu-button" type="button" v-if="!headerStore.isUser" @click.prevent="headerStore.redirectToResolved()">RESOLVED TICKETS</button>
-        <button id="log-out-button" class="menu-button" type="button">LOG OUT</button>
+        <button id="log-out-button" class="menu-button" type="button" @click.prevent="headerStore.logout()">LOG OUT</button>
 
     </div>
 </template>

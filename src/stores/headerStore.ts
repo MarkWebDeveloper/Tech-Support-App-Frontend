@@ -1,8 +1,11 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { useRoute, useRouter } from 'vue-router'
+import { useUsersStore } from './usersStore'
 
 export const useHeaderStore = defineStore('headerStore', () => {
+
+    const userStore = useUsersStore()
 
     const route = useRoute()
     const router = useRouter()
@@ -52,5 +55,12 @@ export const useHeaderStore = defineStore('headerStore', () => {
         router.push(redirectPath)
     }
 
-  return { isUser, menuIsHidden, toggleMenuVisibility, checkUserType, showButton, redirectToResolved, redirectToTickets, redirectToCreate, redirectToEdit, redirectToPending }
+    function logout () {
+        menuIsHidden.value = true
+        userStore.isAuthenticated = false
+        const redirectPath: any = route.query.redirect || '/'
+        router.push(redirectPath)
+    }
+
+  return { isUser, menuIsHidden, toggleMenuVisibility, checkUserType, showButton, redirectToResolved, redirectToTickets, redirectToCreate, redirectToEdit, redirectToPending, logout }
 })
