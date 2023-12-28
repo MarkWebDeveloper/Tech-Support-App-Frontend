@@ -1,6 +1,6 @@
-export default class UserRepository {
+export default class TicketRepository {
 
-    uri = import.meta.env.VITE_API_ENDPOINT_USERS
+    uri = import.meta.env.VITE_API_ENDPOINT_TICKETS
 
     async getAll() {
 
@@ -9,7 +9,7 @@ export default class UserRepository {
             const data = await response.json()
             return data
         } catch (error) {
-            throw new Error('Error occured during APIs users table data extraction')
+            throw new Error('Error occured during APIs tickets table data extraction')
         }
 
     }

@@ -1,9 +1,9 @@
 import User from "@/models/user";
-import UsersRepository from "@/repositories/userRepository";
+import UserRepository from "@/repositories/userRepository";
 
-export default class UsersService {
+export default class UserService {
 
-    repository = new UsersRepository
+    repository = new UserRepository
     users: { id: number; name: string; username: string; password: string; type: boolean; }[] = []; 
 
     constructor(repository: any) {
