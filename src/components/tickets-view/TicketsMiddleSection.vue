@@ -14,8 +14,7 @@ import TicketsDiv from './TicketsDiv.vue';
         <TicketsDiv />
 
         <div id="text-container">
-            <p id="greetings">GREETINGS, HUMAN:</p>
-            <p id="paragraph">LOGIN INTO YOUR ACCOUNT AS AN EMPLOYEE OR TECHNICIAN</p>
+            <p id="paragraph">HERE YOU CAN WATCH AND DELETE YOUR TICKETS. NOT GONNA HELP YOU ANYWAY. YOU'RE ALL PRIMITIVE AND USELESS.</p>
         </div>
 
     </div>
@@ -86,10 +85,6 @@ p {
 
     p {
         font-size: 1.2vmax;
-    }
-
-    #greetings {
-        margin-bottom: 10%;
     }
 }
 </style>
