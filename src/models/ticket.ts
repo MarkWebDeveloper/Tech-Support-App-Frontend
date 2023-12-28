@@ -6,16 +6,14 @@ export default class Ticket {
     problem_type: string
     description: string
     status: string
-    users: Object
 
-    constructor(id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string, users: Object) {
+    constructor(id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string) {
         this.id = id
         this.created_date = created_date
         this.modified_date = modified_date
         this.problem_type = problem_type
         this.description = description
         this.status = status
-        this.users = users
     }
 
     getId() {
@@ -41,9 +39,4 @@ export default class Ticket {
     getStatus() {
         return this.status
     }
- 
-    getUser() {
-        return this.users
-    }
-
 }

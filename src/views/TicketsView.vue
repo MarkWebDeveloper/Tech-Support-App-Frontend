@@ -2,10 +2,12 @@
 import TicketsMiddleSection from '@/components/tickets-view/TicketsMiddleSection.vue';
 import TicketsMobileTopSection from '@/components/tickets-view/TicketsMobileTopSection.vue';
 import { useHeaderStore } from '@/stores/headerStore';
+import { useTicketsStore } from '@/stores/ticketsStore';
 import { useUsersStore } from '@/stores/usersStore';
 
 const userStore = useUsersStore()
 const headerStore = useHeaderStore()
+const ticketsStore = useTicketsStore()
 
 function checkIfAuthenticated() {
     if(userStore.isAuthenticated) {
@@ -18,6 +20,8 @@ function checkIfAuthenticated() {
 }
 
 checkIfAuthenticated()
+
+console.log(ticketsStore.tickets)
 </script>
 
 <template>

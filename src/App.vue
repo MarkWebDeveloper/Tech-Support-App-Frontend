@@ -3,12 +3,17 @@ import { RouterView } from 'vue-router'
 import Header from './components/global/Header.vue';
 import { useUsersStore } from './stores/usersStore';
 import { useHeaderStore } from './stores/headerStore';
+import { useTicketsStore } from './stores/ticketsStore';
 
-const store = useUsersStore()
-const store2 = useHeaderStore()
+const usersStore = useUsersStore()
+const headerStore = useHeaderStore()
+const ticketsStore = useTicketsStore()
 
-const settingUsers = async () => { await store.setUsers() }
+const settingUsers = async () => { await usersStore.setUsers() }
 settingUsers()
+
+const settingTickets = async () => { await ticketsStore.setTickets() }
+settingTickets()
 </script>
 
 <template>
