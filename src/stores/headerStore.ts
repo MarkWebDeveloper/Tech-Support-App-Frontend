@@ -21,6 +21,12 @@ export const useHeaderStore = defineStore('headerStore', () => {
             menuIsHidden.value = true
         }
     }
+
+    function hideMenu() {
+        if (menuIsHidden.value == true) {
+            menuIsHidden.value = false
+        }
+    }
     
     function checkUserType (user: any) {
         if (user.type == 0) {
@@ -33,26 +39,31 @@ export const useHeaderStore = defineStore('headerStore', () => {
     function redirectToTickets() {
         const redirectPath: any = route.query.redirect || '/tickets'
         router.push(redirectPath)
+        menuIsHidden.value = true
     }
     
     function redirectToCreate() {
         const redirectPath: any = route.query.redirect || '/create'
         router.push(redirectPath)
+        menuIsHidden.value = true
     }
 
     function redirectToEdit() {
         const redirectPath: any = route.query.redirect || '/edit'
         router.push(redirectPath)
+        menuIsHidden.value = true
     }
 
     function redirectToPending() {
         const redirectPath: any = route.query.redirect || '/pending'
         router.push(redirectPath)
+        menuIsHidden.value = true
     }
 
     function redirectToResolved() {
         const redirectPath: any = route.query.redirect || '/resolved'
         router.push(redirectPath)
+        menuIsHidden.value = true
     }
 
     function logout () {
@@ -62,5 +73,5 @@ export const useHeaderStore = defineStore('headerStore', () => {
         router.push(redirectPath)
     }
 
-  return { isUser, menuIsHidden, toggleMenuVisibility, checkUserType, showButton, redirectToResolved, redirectToTickets, redirectToCreate, redirectToEdit, redirectToPending, logout }
+  return { isUser, menuIsHidden, toggleMenuVisibility, hideMenu, checkUserType, showButton, redirectToResolved, redirectToTickets, redirectToCreate, redirectToEdit, redirectToPending, logout }
 })
