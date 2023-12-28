@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TicketsMiddleSection from '@/components/tickets-view/TicketsMiddleSection.vue';
+import TicketsMobileTopSection from '@/components/tickets-view/TicketsMobileTopSection.vue';
 import { useHeaderStore } from '@/stores/headerStore';
 import { useUsersStore } from '@/stores/usersStore';
 
@@ -19,15 +21,29 @@ checkIfAuthenticated()
 </script>
 
 <template>
-  <div class="about">
-    <h1>This is a tickets page</h1>
-  </div>
+  <main>
+
+<TicketsMobileTopSection id="mobile-top-section" />
+
+<TicketsMiddleSection />
+
+</main>
 </template>
 
 <style lang="scss" scoped>
+main {
+  width: 100vw;
+  height: 90vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-h1 {
-    font-family: 'Cyberdyne';
-    color: $text-green;
-  }
+@media only screen and (min-width: 768px) {
+    #mobile-top-section {
+        display: none;
+    }
+}
 </style>
