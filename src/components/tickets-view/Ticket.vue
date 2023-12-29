@@ -16,7 +16,7 @@ const props = defineProps({
 <template>
     <div id="ticket-container">
         <div id="number_delete_container">
-            <p id="ticket-number">#{{ index + 1 }}</p>
+            <p id="ticket-number">#{{ ticket.id }}</p>
             <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>
             <button type="button" id="delete-button">DELETE</button>
         </div>
