@@ -4,8 +4,12 @@ import { useUsersStore } from '@/stores/usersStore';
 const userStore = useUsersStore()
 
 const props = defineProps({
-  ticket: Object,
-  index: Number
+  ticket: {
+    type: Object,
+    required: true},
+  index: {
+    type: Number,
+    required: true}
 })
 </script>
 
