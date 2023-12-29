@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useTicketsStore } from '@/stores/ticketsStore';
 import { useUsersStore } from '@/stores/usersStore';
 
 const userStore = useUsersStore()
+const ticketStore = useTicketsStore()
 
 const props = defineProps({
   ticket: {
@@ -18,7 +20,7 @@ const props = defineProps({
         <div id="number_delete_container">
             <p id="ticket-number">#{{ ticket.id }}</p>
             <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>
-            <button type="button" id="delete-button">DELETE</button>
+            <button type="button" id="delete-button" @click.prevent="ticketStore.deleteTicket(ticket.id)">DELETE</button>
         </div>
         <h3 id="problem-type-mobile">Problem name</h3>
         <p id="problem-description">{{ ticket.description }}</p>

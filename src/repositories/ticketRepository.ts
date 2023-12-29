@@ -17,7 +17,7 @@ export default class TicketRepository {
     async deleteById(id: number) {
         
         try {
-            const response = await fetch(this.uri + id, {
+            const response = await fetch(this.uri + '/' + id, {
                 method: 'DELETE',
               });
               const text = await response.text();
