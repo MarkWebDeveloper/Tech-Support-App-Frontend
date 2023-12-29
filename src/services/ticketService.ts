@@ -21,4 +21,12 @@ export default class TicketService {
         return this.tickets
     }
 
+    async delete(id: number) {
+        const tickets = await this.repository.getAll()
+        await this.repository.deleteById(id)
+        
+        tickets.splice(id, 1)
+        return this.tickets
+    }
+
 }

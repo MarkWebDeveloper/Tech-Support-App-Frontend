@@ -15,5 +15,9 @@ export const useTicketsStore = defineStore('tickets', () => {
     isLoaded.value = true
   }
 
-  return { tickets, isLoaded, setTickets }
+  async function deleteTicket(this: any, id: number) {
+    this.tickets = await service.delete(id)
+  }
+
+  return { tickets, isLoaded, setTickets, deleteTicket }
 })

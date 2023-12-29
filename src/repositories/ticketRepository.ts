@@ -14,4 +14,18 @@ export default class TicketRepository {
 
     }
 
+    async deleteById(id: number) {
+        
+        try {
+            const response = await fetch(this.uri + id, {
+                method: 'DELETE',
+              });
+              const text = await response.text();
+              console.log(text);
+        } catch (error) {
+            throw new Error('Error occured during APIs ticket deletion')
+        }
+
+      }
+
 }
