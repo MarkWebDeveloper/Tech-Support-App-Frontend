@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import Ticket from './Ticket.vue';
+import { useUsersStore } from '@/stores/usersStore';
 
-
+const userStore = useUsersStore()
 </script>
 
 <template>
     <div id="tickets-div">
-        <Ticket />
+        <Ticket v-for="(ticket, index) in userStore.users[userStore.activeUserIndex].tickets" v-if="userStore.isLoaded" :ticket="ticket" :index="index"/>
     </div>
 </template>
 

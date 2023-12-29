@@ -21,7 +21,7 @@ function checkIfAuthenticated() {
 
 checkIfAuthenticated()
 
-console.log(ticketsStore.tickets)
+console.log(userStore.users)
 </script>
 
 <template>

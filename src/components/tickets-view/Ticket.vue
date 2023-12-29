@@ -1,20 +1,26 @@
 <script setup lang="ts">
+import { useUsersStore } from '@/stores/usersStore';
 
+const userStore = useUsersStore()
+
+const props = defineProps({
+  ticket: Object,
+  index: Number
+})
 </script>
 
 <template>
     <div id="ticket-container">
         <div id="number_delete_container">
-            <p id="ticket-number">#1</p>
-            <h3 id="problem-type-desktop">Problem name</h3>
+            <p id="ticket-number">#{{ index + 1 }}</p>
+            <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>
             <button type="button" id="delete-button">DELETE</button>
         </div>
         <h3 id="problem-type-mobile">Problem name</h3>
-        <p id="problem-description">Join & Create Image Creator from Designer helps you generate images based on your words
-            with AI. Learn more. You will receive emails about Microsoft Rewards, which</p>
+        <p id="problem-description">{{ ticket.description }}</p>
         <div id="status-container">
             <h4 id="status">STATUS:</h4>
-            <h4 id="current-status">PENDING</h4>
+            <h4 id="current-status">{{ ticket.status }}</h4>
         </div>
     </div>
 </template>
