@@ -6,7 +6,7 @@ const ticketsStore = useTicketsStore()
 </script>
 
 <template>
-    <div id="tickets-div">
+    <form action="submit" id="new-ticket-form">
         <h2>SELECT YOUR PROBLEM</h2>
         <div id="select-problem-div">
             <select v-model="ticketsStore.selectedProblem">
@@ -16,11 +16,16 @@ const ticketsStore = useTicketsStore()
         </div>
         <label for="description">ADD THE DESCRIPTION</label>
         <textarea name="description" id="description" v-model="ticketsStore.newTicketDescription"></textarea>
-    </div>
+        <div id="buttons-div">
+            <button type="button" id="cancel-button" class="button">CANCEL</button>
+            <button type="button" id="reset-button" class="button">RESET</button>
+            <button type="submit" id="submit-button" class="button">CREATE</button>
+        </div>
+    </form>
 </template>
 
 <style scoped lang="scss">
-#tickets-div {
+#new-ticket-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,11 +76,34 @@ textarea {
     overflow-y: auto;
 }
 
+#buttons-div {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background-color: white;
+    font-family: 'Cyberdyne Condensed';
+    font-style: italic;
+    font-size: 1.5vmax;
+    width: 10vmax;
+    height: 2.2vmax;
+}
+
 @media only screen and (min-width: 768px) {
     #tickets-div {
         height: 100%;
         width: 60vw;
         margin-bottom: 0%;
+    }
+
+    button {
+        padding: 5px 15px 5px 15px;
+        margin-left: auto;
+        margin-right: 10%;
+        font-size: 1vmax;
     }
 }
 </style>
