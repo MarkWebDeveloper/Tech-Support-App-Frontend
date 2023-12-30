@@ -3,14 +3,13 @@ import { useTicketsStore } from '@/stores/ticketsStore';
 import ProblemOption from './ProblemOption.vue';
 
 const ticketsStore = useTicketsStore()
-const problem_types: String[] = ["Problem with Skynet", "Problem with T-800", "Problem with T-1000", "Problem with T-X", "Problem with T-1", "Problem with T-600", "Other"]
 </script>
 
 <template>
     <div id="tickets-div">
         <h2>SELECT YOUR PROBLEM</h2>
         <div id="select-problem-div">
-            <select>
+            <select v-model="ticketsStore.selectedProblem">
                 <option value="">SELECT PROBLEM TYPE</option>
                 <ProblemOption v-for="(problem, index) in ticketsStore.problem_types" :problem="problem" :index="index"/>
             </select>

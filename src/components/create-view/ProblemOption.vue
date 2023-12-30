@@ -5,7 +5,6 @@ const ticketsStore = useTicketsStore()
 
 const props = defineProps({
   problem: {
-    type: String,
     required: true},
   index: {
     type: Number,
@@ -14,7 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
-   <option value="0">{{ problem }}</option>
+   <option :value="problem">{{ problem }}</option>
 </template>
 
 <style scoped lang="scss">
