@@ -38,7 +38,7 @@ function deleteFromSortedTickets(id: number) {
 <style scoped lang="scss">
 #ticket-container {
     width: 90%;
-    height: 50%;
+    min-height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -111,7 +111,7 @@ button {
 
     #ticket-container {
         width: 95%;
-        height: 25%;
+        min-height: 25%;
     }
 
     #ticket-number {

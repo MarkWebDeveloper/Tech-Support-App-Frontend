@@ -40,7 +40,6 @@ function sort_by_id() {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
     height: 50vh;
     width: 90vw;
     background-color: $base-grey;
