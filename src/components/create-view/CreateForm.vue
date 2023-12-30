@@ -1,8 +1,24 @@
 <script setup lang="ts">
 import { useTicketsStore } from '@/stores/ticketsStore';
 import ProblemOption from './ProblemOption.vue';
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
 
 const ticketsStore = useTicketsStore()
+
+function cancelTicketCreation() {
+    ticketsStore.selectedProblem = ''
+    ticketsStore.newTicketDescription = ''
+    const redirectPath: any = route.query.redirect || '/tickets'
+    router.push(redirectPath)
+}
+
+function resetTicket() {
+    ticketsStore.selectedProblem = ''
+    ticketsStore.newTicketDescription = ''
+}
 </script>
 
 <template>
@@ -17,8 +33,8 @@ const ticketsStore = useTicketsStore()
         <label for="description">ADD THE DESCRIPTION</label>
         <textarea name="description" id="description" v-model="ticketsStore.newTicketDescription"></textarea>
         <div id="buttons-div">
-            <button type="button" id="cancel-button" class="button">CANCEL</button>
-            <button type="button" id="reset-button" class="button">RESET</button>
+            <button type="button" id="cancel-button" class="button" @click="cancelTicketCreation()">CANCEL</button>
+            <button type="button" id="reset-button" class="button" @click="resetTicket()">RESET</button>
             <button type="submit" id="submit-button" class="button">CREATE</button>
         </div>
     </form>
