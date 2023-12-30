@@ -14,6 +14,8 @@ const ticketsStore = useTicketsStore()
                 <ProblemOption v-for="(problem, index) in ticketsStore.problem_types" :problem="problem" :index="index"/>
             </select>
         </div>
+        <label for="description">ADD THE DESCRIPTION</label>
+        <textarea name="description" id="description" v-model="ticketsStore.newTicketDescription"></textarea>
     </div>
 </template>
 
@@ -22,14 +24,14 @@ const ticketsStore = useTicketsStore()
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     height: 100%;
     width: 90vw;
     background-color: $base-grey;
     overflow-y: auto;
 }
 
-h2 {
+h2, label {
     font-family: "Cyberdyne Halftone";
     font-style: italic;
     color: white;
@@ -55,6 +57,18 @@ select {
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: 2em auto, 100%;
+}
+
+textarea {
+    height: 50%;
+    width: 90%;
+    background-color: black;
+    font-family: 'VT323', monospace;
+    color: $text-green;
+    padding: 5px;
+    font-size: 2.5vmax;
+    line-height: 3vmax;
+    overflow-y: auto;
 }
 
 @media only screen and (min-width: 768px) {
