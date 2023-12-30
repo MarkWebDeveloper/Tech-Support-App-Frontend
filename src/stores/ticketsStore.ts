@@ -9,6 +9,7 @@ export const useTicketsStore = defineStore('tickets', () => {
 
   let tickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([]); 
   let isLoaded = ref(false)
+  const problem_types: String[] = reactive(["Problem with Skynet", "Problem with T-800", "Problem with T-1000", "Problem with T-X", "Problem with T-1", "Problem with T-600", "Other"])
 
   async function setTickets(this: any) {
     this.tickets = await service.index()
@@ -19,5 +20,5 @@ export const useTicketsStore = defineStore('tickets', () => {
     this.tickets = await service.delete(id)
   }
 
-  return { tickets, isLoaded, setTickets, deleteTicket }
+  return { tickets, isLoaded, setTickets, deleteTicket, problem_types }
 })
