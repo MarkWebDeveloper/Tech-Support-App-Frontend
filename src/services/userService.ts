@@ -5,7 +5,7 @@ import UserRepository from "@/repositories/userRepository";
 export default class UserService {
 
     repository = new UserRepository
-    users: { id: number; name: string; username: string; password: string; type: boolean, tickets: Array<Ticket> }[] = []; 
+    users: { id: number; name: string; username: string; password: string; type: boolean, tickets: Array<Ticket> }[] = []
 
     constructor(repository: any) {
         this.repository = repository

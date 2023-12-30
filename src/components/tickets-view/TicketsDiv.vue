@@ -6,15 +6,13 @@ import UserRepository from '@/repositories/userRepository';
 import UserService from '@/services/userService';
 const userStore = useUsersStore()
 
-let sortedTickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = []
-
 onBeforeMount(async () => {
     const repository = new UserRepository
     const service = new UserService(repository)
     userStore.isLoaded = false
     userStore.users = await service.index()
     userStore.isLoaded = true
-    sortedTickets = userStore.users[userStore.activeUserIndex].tickets.sort(sort_by_id())
+    userStore.usersSortedTickets = userStore.users[userStore.activeUserIndex].tickets.sort(sort_by_id())
 })
 
 function sort_by_id() {
@@ -33,7 +31,7 @@ function sort_by_id() {
 
 <template>
     <div id="tickets-div">
-        <Ticket v-for="(ticket, index) in sortedTickets" v-if="userStore.isLoaded" :ticket="ticket" :index="index"/>
+        <Ticket v-for="(ticket, index) in userStore.usersSortedTickets" v-if="userStore.isLoaded" :ticket="ticket" :index="index"/>
     </div>
 </template>
 

@@ -13,6 +13,10 @@ const props = defineProps({
     type: Number,
     required: true}
 })
+
+function deleteFromSortedTickets(id: number) {
+    userStore.usersSortedTickets.splice(id, 1)
+  }
 </script>
 
 <template>
@@ -20,7 +24,7 @@ const props = defineProps({
         <div id="number_delete_container">
             <p id="ticket-number">#{{ ticket.id }}</p>
             <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>
-            <button type="button" id="delete-button" @click.prevent="ticketStore.deleteTicket(ticket.id)">DELETE</button>
+            <button type="button" id="delete-button" @click.prevent="deleteFromSortedTickets(ticket.id), ticketStore.deleteTicket(ticket.id)">DELETE</button>
         </div>
         <h3 id="problem-type-mobile">Problem name</h3>
         <p id="problem-description">{{ ticket.description }}</p>
