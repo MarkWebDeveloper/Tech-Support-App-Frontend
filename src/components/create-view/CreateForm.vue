@@ -25,13 +25,13 @@ function resetTicket() {
     <form action="submit" id="new-ticket-form">
         <h2>SELECT YOUR PROBLEM</h2>
         <div id="select-problem-div">
-            <select v-model="ticketsStore.selectedProblem">
+            <select v-model="ticketsStore.ticketToPost.problem_type">
                 <option value="">SELECT PROBLEM TYPE</option>
                 <ProblemOption v-for="(problem, index) in ticketsStore.problem_types" :problem="problem" :index="index"/>
             </select>
         </div>
         <label for="description">ADD THE DESCRIPTION</label>
-        <textarea name="description" id="description" v-model="ticketsStore.newTicketDescription"></textarea>
+        <textarea name="description" id="description" v-model="ticketsStore.ticketToPost.description"></textarea>
         <div id="buttons-div">
             <button type="button" id="cancel-button" class="button" @click="cancelTicketCreation()">CANCEL</button>
             <button type="button" id="reset-button" class="button" @click="resetTicket()">RESET</button>

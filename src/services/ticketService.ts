@@ -29,4 +29,12 @@ export default class TicketService {
         return this.tickets
     }
 
+    async create(data: Object) {
+        const tickets = await this.repository.getAll()
+        await this.repository.create(data)
+        
+        tickets.push(data)
+        return this.tickets
+    }
+
 }

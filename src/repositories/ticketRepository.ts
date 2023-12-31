@@ -9,9 +9,8 @@ export default class TicketRepository {
             const data = await response.json()
             return data
         } catch (error) {
-            throw new Error('Error occured during APIs tickets table data extraction')
+            throw new Error('Error occured during API fetch GET request')
         }
-
     }
 
     async deleteById(id: number) {
@@ -23,9 +22,25 @@ export default class TicketRepository {
               const text = await response.text();
               console.log(text);
         } catch (error) {
-            throw new Error('Error occured during APIs ticket deletion')
+            throw new Error('Error occured during API fetch DELETE request')
         }
-
       }
+
+    async create(data: Object) {
+
+        try {
+            const response = await fetch(this.uri, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+            const text = await response.text();
+            console.log(text);
+        }   catch (error) {
+            throw new Error('Error occured during API fetch POST request')
+        }
+    }
 
 }
