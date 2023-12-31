@@ -25,6 +25,10 @@ main {
 }
 
 @media only screen and (min-width: 768px) {
+    main {
+      justify-content: center;
+    }
+
     #mobile-top-section {
         display: none;
     }

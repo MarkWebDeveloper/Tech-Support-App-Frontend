@@ -109,17 +109,39 @@ button {
 }
 
 @media only screen and (min-width: 768px) {
-    #tickets-div {
+    #new-ticket-form {
         height: 100%;
         width: 60vw;
         margin-bottom: 0%;
     }
 
-    button {
-        padding: 5px 15px 5px 15px;
-        margin-left: auto;
-        margin-right: 10%;
+    h2,
+    label {
+        font-size: 1.4vmax;
+    }
+
+    select {
         font-size: 1vmax;
+        padding: 0.5vmax;
+        background-size: 1.5em auto, 100%;
+    }
+
+    textarea {
+        padding: 5px;
+        font-size: 1.5vmax;
+        line-height: 2vmax;
+        overflow-y: auto;
+    }
+
+    #buttons-div {
+        justify-content: flex-end;
+    }
+
+    button {
+        width: 6vmax;
+        height: 1.5vmax;
+        font-size: 0.8vmax;
+        margin-left: 6%;
     }
 }
 </style>
