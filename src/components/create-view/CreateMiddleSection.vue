@@ -66,7 +66,7 @@ p {
 
     #center-section-container {
         width: 100%;
-        height: 33vmax;
+        height: 30vmax;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;

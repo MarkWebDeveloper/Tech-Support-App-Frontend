@@ -113,6 +113,8 @@ button {
         height: 100%;
         width: 60vw;
         margin-bottom: 0%;
+        align-items: flex-start;
+        padding-left: 5%;
     }
 
     h2,
