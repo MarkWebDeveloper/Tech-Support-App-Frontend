@@ -26,7 +26,7 @@ function deleteFromSortedTickets(id: number) {
             <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>
             <button type="button" id="delete-button" @click.prevent="deleteFromSortedTickets(ticket.id), ticketStore.deleteTicket(ticket.id)">DELETE</button>
         </div>
-        <h3 id="problem-type-mobile">Problem name</h3>
+        <h3 id="problem-type-mobile">{{ ticket.problem_type }}</h3>
         <p id="problem-description">{{ ticket.description }}</p>
         <div id="status-container">
             <h4 id="status">STATUS:</h4>

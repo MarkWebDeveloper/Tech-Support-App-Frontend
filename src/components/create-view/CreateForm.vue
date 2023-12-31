@@ -18,8 +18,8 @@ function cancelTicketCreation() {
 }
 
 function resetTicket() {
-    ticketsStore.selectedProblem = ''
-    ticketsStore.newTicketDescription = ''
+    ticketsStore.ticketToPost.problem_type = ''
+    ticketsStore.ticketToPost.description = ''
 }
 
 function setUserId () {
@@ -43,7 +43,7 @@ setUserId()
         <div id="buttons-div">
             <button type="button" id="cancel-button" class="button" @click="cancelTicketCreation()">CANCEL</button>
             <button type="button" id="reset-button" class="button" @click="resetTicket()">RESET</button>
-            <button type="submit" id="submit-button" class="button" @click.prevent="ticketsStore.createTicket(ticketsStore.ticketToPost)">CREATE</button>
+            <button type="submit" id="submit-button" class="button" @click.prevent="ticketsStore.createTicket(ticketsStore.ticketToPost), resetTicket()">CREATE</button>
         </div>
     </form>
 </template>

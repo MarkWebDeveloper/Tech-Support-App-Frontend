@@ -36,6 +36,7 @@ export const useTicketsStore = defineStore('tickets', () => {
 
   async function createTicket(this: any, data: Object) {
     this.tickets = await service.create(data)
+    alert ("Ticket is created succesfully")
   }
 
   return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket }
