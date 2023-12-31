@@ -16,6 +16,7 @@ export const useTicketsStore = defineStore('tickets', () => {
     problem_type: ref(""),
     description: ref(""),
     status: ref("pending"),
+    userId: ref()
 
     // constructor (problem_type: string, description: string, status: string) {
     //   this.problem_type = problem_type

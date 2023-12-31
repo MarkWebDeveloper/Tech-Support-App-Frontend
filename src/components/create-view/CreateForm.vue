@@ -2,11 +2,13 @@
 import { useTicketsStore } from '@/stores/ticketsStore';
 import ProblemOption from './ProblemOption.vue';
 import { useRoute, useRouter } from 'vue-router'
+import { useUsersStore } from '@/stores/usersStore';
 
 const route = useRoute()
 const router = useRouter()
 
 const ticketsStore = useTicketsStore()
+const usersStore = useUsersStore()
 
 function cancelTicketCreation() {
     ticketsStore.selectedProblem = ''
@@ -19,6 +21,12 @@ function resetTicket() {
     ticketsStore.selectedProblem = ''
     ticketsStore.newTicketDescription = ''
 }
+
+function setUserId () {
+    ticketsStore.ticketToPost.userId = usersStore.activeUserIndex + 1
+}
+
+setUserId()
 </script>
 
 <template>
