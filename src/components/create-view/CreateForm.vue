@@ -98,6 +98,7 @@ textarea {
     font-size: 2.5vmax;
     line-height: 3vmax;
     overflow-y: auto;
+    resize: none;
 }
 
 #buttons-div {
