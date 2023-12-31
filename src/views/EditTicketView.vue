@@ -7,7 +7,7 @@ import EditMobileTopSection from '@/components/edit-view/EditMobileTopSection.vu
 
 <template>
   <main>
-    <EditMobileTopSection />
+    <EditMobileTopSection id="mobile-top-section"/>
 
     <EditMiddleSection />
   </main>

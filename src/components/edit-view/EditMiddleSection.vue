@@ -15,7 +15,7 @@ import EditForm from './EditForm.vue';
         <EditForm />
 
         <div id="text-container">
-            <p id="paragraph">HERE YOU CAN WATCH AND DELETE YOUR TICKETS. NOT GONNA HELP YOU ANYWAY. YOU'RE ALL PRIMITIVE AND USELESS.</p>
+            <p id="paragraph">WE UNDERSTAND THAT DUE TO YOUR USUAL STUPIDITY YOU, HUMANS, MAKE A LOT OF MISTAKES. SO, HERE YOU CAN EDIT YOUR PREVIOUS TICKETS</p>
         </div>
 
     </div>
@@ -42,10 +42,11 @@ import EditForm from './EditForm.vue';
     display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 20%;
+    justify-content: center;
+    height: 60%;
     width: 70%;
     text-align: center;
+    line-height: 1.5vmax;
 }
 
 p {

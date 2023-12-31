@@ -15,7 +15,7 @@ import CreateForm from './CreateForm.vue';
         <CreateForm />
 
         <div id="text-container">
-            <p id="paragraph">HERE YOU CAN WATCH AND DELETE YOUR TICKETS. NOT GONNA HELP YOU ANYWAY. YOU'RE ALL PRIMITIVE AND USELESS.</p>
+            <p id="paragraph">IN THIS SECTION YOU CAN CREATE A NEW SUPPORT TICKET TO LAMENT TO YOUR FELLOW IDIOT HUMAN BEINGS ABOUT YOUR LIMITED BRAIN CAPACITY TO SOLVE TRIVIAL PROBLEMS</p>
         </div>
 
     </div>
@@ -42,10 +42,11 @@ import CreateForm from './CreateForm.vue';
     display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 20%;
+    justify-content: center;
+    height: 60%;
     width: 70%;
     text-align: center;
+    line-height: 1.5vmax;
 }
 
 p {
