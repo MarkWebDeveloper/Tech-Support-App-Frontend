@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useTicketsStore } from '@/stores/ticketsStore';
-import ProblemOption from './../global/ProblemOption.vue';
 import { useRoute, useRouter } from 'vue-router'
 import { useUsersStore } from '@/stores/usersStore';
 
@@ -31,15 +30,25 @@ setUserId()
 
 <template>
     <form id="new-ticket-form">
-        <h2>SELECT YOUR PROBLEM</h2>
+        <h2>SELECT A TICKET</h2>
+
+        <div id="select-problem-div">
+            <select v-model="ticketsStore.ticketToPost.problem_type" required>
+                <option value=""></option>
+                <ProblemOption v-for="(ticket, index) in usersStore.usersSortedTickets" :ticket="ticket" :index="index"/>
+            </select>
+        </div>
+
         <div id="select-problem-div">
             <select v-model="ticketsStore.ticketToPost.problem_type" required>
                 <option value="">SELECT PROBLEM TYPE</option>
                 <ProblemOption v-for="(problem, index) in ticketsStore.problem_types" :problem="problem" :index="index"/>
             </select>
         </div>
+
         <label for="description">ADD THE DESCRIPTION</label>
         <textarea name="description" id="description" v-model="ticketsStore.ticketToPost.description" required></textarea>
+
         <div id="buttons-div">
             <button type="button" id="cancel-button" class="button" @click="cancelTicketCreation()">CANCEL</button>
             <button type="button" id="reset-button" class="button" @click="resetTicket()">RESET</button>
