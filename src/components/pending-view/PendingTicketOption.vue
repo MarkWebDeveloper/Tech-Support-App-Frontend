@@ -11,10 +11,14 @@ const props = defineProps({
     type: Number,
     required: true}
 })
+
+function assignTicket () {
+  Object.assign(ticketsStore.selectedTicket, props.ticket)
+}
 </script>
 
 <template>
-   <option :value="ticket">#{{ ticket.id }} {{ ticket.problem_type }} {{ ticket.description.substr(0, 30) }}...</option>
+   <option :value="ticket" @click="assignTicket()">#{{ ticket.id }} {{ ticket.problem_type }} {{ ticket.description.substr(0, 30) }}...</option>
 </template>
 
 <style scoped lang="scss">

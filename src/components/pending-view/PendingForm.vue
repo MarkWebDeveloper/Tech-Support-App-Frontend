@@ -3,7 +3,7 @@ import { useTicketsStore } from '@/stores/ticketsStore'
 import { useRoute, useRouter } from 'vue-router'
 import { useUsersStore } from '@/stores/usersStore'
 import PendingTicketOption from './PendingTicketOption.vue';
-import ProblemOption from './../global/ProblemOption.vue';
+import { reactive, ref } from 'vue';
 
 const route = useRoute()
 const router = useRouter()
@@ -11,16 +11,12 @@ const router = useRouter()
 const ticketsStore = useTicketsStore()
 const usersStore = useUsersStore()
 
-function cancelTicketEditing() {
-    ticketsStore.selectedProblem = ''
-    ticketsStore.newTicketDescription = ''
-    const redirectPath: any = route.query.redirect || '/tickets'
-    router.push(redirectPath)
+function setAsNotResolved() {
+    ticketsStore.selectedTicket.status = "not resolved"
 }
 
-function resetTicket() {
-    ticketsStore.ticketToPost.problem_type = ''
-    ticketsStore.ticketToPost.description = ''
+function setAsResolved() {
+    ticketsStore.selectedTicket.status = "resolved"
 }
 
 function setUserId () {
@@ -41,19 +37,20 @@ setUserId()
             </select>
         </div>
 
-        <div id="select-problem-div">
-            <select v-model="ticketsStore.ticketToPost.problem_type" required>
-                <option id="problem-not-selected" value=""></option>
-                <ProblemOption v-for="(problem, index) in ticketsStore.problem_types" :problem="problem" :index="index"/>
-            </select>
+        <div id="problem-div">
+            <p>{{ ticketsStore.selectedTicket.problem_type }}</p>
         </div>
 
-        <textarea name="description" id="description" v-model="ticketsStore.ticketToPost.description" required></textarea>
+        <div id="description-div">
+            <p>{{ ticketsStore.selectedTicket.description }}</p>
+        </div>
+
+        <h2 id="mark-as">MARK AS:</h2>
 
         <div id="buttons-div">
-            <button type="button" id="cancel-button" class="button" @click="cancelTicketEditing()">CANCEL</button>
-            <button type="button" id="reset-button" class="button" @click="resetTicket()">RESET</button>
-            <button type="submit" id="submit-button" class="button" @click.prevent="ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.ticketToPost)">SUBMIT</button>
+            <button type="submit" id="set-not-resolved" class="button" @click="setAsNotResolved(), ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)">NOT RESOLVED</button>
+
+            <button type="submit" id="set-resolved" class="button" @click="setAsResolved(), ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)">RESOLVED</button>
         </div>
     </form>
 </template>
@@ -70,7 +67,7 @@ setUserId()
     overflow-y: auto;
 }
 
-h2, label {
+h2 {
     font-family: "Cyberdyne Halftone";
     font-style: italic;
     color: white;
@@ -82,9 +79,29 @@ h2, label {
     position: relative;
 }
 
-#select-problem-div {
+#problem-div {
+    display: flex;
+    align-items: center;
     width: 90%;
-    position: relative;
+    height: 6%;
+    background-color: black;
+    font-family: "Cyberdyne";
+    font-size: 1.5vmax;
+    color: white;
+    padding-left: 5px;
+}
+
+#description-div {
+    height: 40%;
+    width: 90%;
+    background-color: black;
+    font-family: 'VT323', monospace;
+    color: $text-green;
+    padding: 5px;
+    font-size: 2.5vmax;
+    line-height: 3vmax;
+    overflow-y: auto;
+    resize: none;
 }
 
 select {
@@ -103,19 +120,6 @@ select {
     background-size: 2em auto, 100%;
 }
 
-textarea {
-    height: 40%;
-    width: 90%;
-    background-color: black;
-    font-family: 'VT323', monospace;
-    color: $text-green;
-    padding: 5px;
-    font-size: 2.5vmax;
-    line-height: 3vmax;
-    overflow-y: auto;
-    resize: none;
-}
-
 #buttons-div {
     width: 90%;
     display: flex;
@@ -128,8 +132,8 @@ button {
     font-family: 'Cyberdyne Condensed';
     font-style: italic;
     font-size: 1.5vmax;
-    width: 10vmax;
-    height: 2.2vmax;
+    width: 15vmax;
+    height: 2.5vmax;
 }
 
 @media only screen and (min-width: 768px) {
@@ -141,8 +145,7 @@ button {
         padding-left: 5%;
     }
 
-    h2,
-    label {
+    h2 {
         font-size: 1.4vmax;
     }
 
@@ -152,7 +155,7 @@ button {
         background-size: 1.5em auto, 100%;
     }
 
-    textarea {
+    #description-div {
         height: 30%;
         padding: 5px;
         font-size: 1.5vmax;
