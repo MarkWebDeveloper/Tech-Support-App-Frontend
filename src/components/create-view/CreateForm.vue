@@ -25,7 +25,7 @@ setUserId()
 </script>
 
 <template>
-    <form id="new-ticket-form">
+    <form id="new-ticket-form" @submit.prevent="ticketsStore.createTicket(ticketsStore.ticketToPost)">
         <h2>SELECT YOUR PROBLEM</h2>
         <div id="select-problem-div">
             <select v-model="ticketsStore.ticketToPost.problem_type" required>
@@ -38,7 +38,7 @@ setUserId()
         <div id="buttons-div">
             <button type="button" id="cancel-button" class="button" @click="cancelTicketCreation()">CANCEL</button>
             <button type="button" id="reset-button" class="button" @click="ticketsStore.resetTicket()">RESET</button>
-            <button type="submit" id="submit-button" class="button" @click.prevent="ticketsStore.createTicket(ticketsStore.ticketToPost)">CREATE</button>
+            <button type="submit" id="submit-button" class="button">CREATE</button>
         </div>
     </form>
 </template>

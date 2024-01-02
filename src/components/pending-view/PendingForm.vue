@@ -12,11 +12,22 @@ const ticketsStore = useTicketsStore()
 const usersStore = useUsersStore()
 
 function setAsNotResolved() {
-    ticketsStore.selectedTicket.status = "not resolved"
+    if (Object.keys(ticketsStore.selectedTicket).length === 0) {
+        alert("Please, select a ticket")
+    } else {
+        ticketsStore.selectedTicket.status = "not resolved"
+        ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)
+    }
 }
 
 function setAsResolved() {
-    ticketsStore.selectedTicket.status = "resolved"
+    if (Object.keys(ticketsStore.selectedTicket).length === 0) {
+        alert("Please, select a ticket")
+    } else {
+        ticketsStore.selectedTicket.status = "resolved"
+        ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)
+    }
+    
 }
 
 function setUserId () {
@@ -48,9 +59,9 @@ setUserId()
         <h2 id="mark-as">MARK AS:</h2>
 
         <div id="buttons-div">
-            <button type="submit" id="set-not-resolved" class="button" @click="setAsNotResolved(), ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)">NOT RESOLVED</button>
+            <button type="button" id="set-not-resolved" class="button" @click.prevent="setAsNotResolved()">NOT RESOLVED</button>
 
-            <button type="submit" id="set-resolved" class="button" @click="setAsResolved(), ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)">RESOLVED</button>
+            <button type="button" id="set-resolved" class="button" @click.prevent="setAsResolved()">RESOLVED</button>
         </div>
     </form>
 </template>
