@@ -8,6 +8,7 @@ export const useTicketsStore = defineStore('tickets', () => {
   const service = new TicketService(repository)
 
   let tickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([]); 
+  let pendingTickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([]); 
   let isLoaded = ref(false)
   const problem_types: String[] = reactive(["Problem with Skynet", "Problem with T-800", "Problem with T-1000", "Problem with T-X", "Problem with T-1", "Problem with T-600", "Other"])
   let selectedProblem = ref<string>("")
@@ -46,5 +47,5 @@ export const useTicketsStore = defineStore('tickets', () => {
     ticketToPost.description = ''
 }
 
-  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket, updateTicket, resetTicket, selectedTicket }
+  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket, updateTicket, resetTicket, selectedTicket, pendingTickets }
 })
