@@ -42,8 +42,7 @@ function checkIfAuthenticated() {
 }
 
 checkIfAuthenticated()
-
-console.log(userStore.users)
+headerStore.checkUserType(userStore.users[userStore.activeUserIndex])
 </script>
 
 <template>

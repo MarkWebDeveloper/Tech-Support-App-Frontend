@@ -46,6 +46,7 @@ function checkIfAuthenticated() {
 }
 
 checkIfAuthenticated()
+headerStore.checkUserType(userStore.users[userStore.activeUserIndex])
 </script>
 
 <template>
