@@ -29,11 +29,21 @@ export default class TicketService {
         return this.tickets
     }
 
-    async create(data: Object) {
+    async create(ticket: Object) {
         const tickets = await this.repository.getAll()
-        await this.repository.create(data)
+        await this.repository.create(ticket)
         
-        tickets.push(data)
+        tickets.push(ticket)
+        return this.tickets
+    }
+
+    async update(id: number, ticket: Object) {
+        const tickets = await this.repository.getAll()
+        await this.repository.update(id, ticket)
+
+        let indexOfTicket = tickets.findIndex((element: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }) => element.id == id)
+
+        tickets[indexOfTicket] = ticket
         return this.tickets
     }
 

@@ -43,4 +43,20 @@ export default class TicketRepository {
         }
     }
 
+    async update(id: number, data: Object) {
+        try {
+            const response = await fetch(this.uri + '/' + id, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+              });
+              const text = await response.text();
+              console.log(text);
+        } catch (error) {
+            throw new Error('Error occured during API fetch PUT request')
+        }
+    }
+
 }

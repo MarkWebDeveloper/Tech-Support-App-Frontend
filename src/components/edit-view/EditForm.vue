@@ -35,7 +35,7 @@ setUserId()
         <h2>SELECT A TICKET</h2>
 
         <div id="select-ticket-div">
-            <select id="select-ticket" required>
+            <select id="select-ticket" v-model="ticketsStore.selectedTicket" required>
                 <option id="ticket-not-selected" value=""></option>
                 <TicketOption v-for="(ticket, index) in usersStore.usersSortedTickets" :ticket="ticket" :index="index"/>
             </select>
@@ -56,7 +56,7 @@ setUserId()
         <div id="buttons-div">
             <button type="button" id="cancel-button" class="button" @click="cancelTicketEditing()">CANCEL</button>
             <button type="button" id="reset-button" class="button" @click="resetTicket()">RESET</button>
-            <button type="submit" id="submit-button" class="button" @click.prevent="ticketsStore.createTicket(ticketsStore.ticketToPost), resetTicket()">SUBMIT</button>
+            <button type="submit" id="submit-button" class="button" @click.prevent="ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.ticketToPost)">SUBMIT</button>
         </div>
     </form>
 </template>

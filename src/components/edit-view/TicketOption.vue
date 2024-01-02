@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-   <option :value="ticket.id">#{{ ticket.id }} {{ ticket.problem_type }} {{ ticket.description.substr(0, 30) }}...</option>
+   <option :value="ticket">#{{ ticket.id }} {{ ticket.problem_type }} {{ ticket.description.substr(0, 30) }}...</option>
 </template>
 
 <style scoped lang="scss">

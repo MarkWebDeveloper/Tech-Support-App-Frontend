@@ -17,11 +17,6 @@ function cancelTicketCreation() {
     router.push(redirectPath)
 }
 
-function resetTicket() {
-    ticketsStore.ticketToPost.problem_type = ''
-    ticketsStore.ticketToPost.description = ''
-}
-
 function setUserId () {
     ticketsStore.ticketToPost.userId = usersStore.activeUserIndex + 1
 }
@@ -42,7 +37,7 @@ setUserId()
         <textarea name="description" id="description" v-model="ticketsStore.ticketToPost.description" required></textarea>
         <div id="buttons-div">
             <button type="button" id="cancel-button" class="button" @click="cancelTicketCreation()">CANCEL</button>
-            <button type="button" id="reset-button" class="button" @click="resetTicket()">RESET</button>
+            <button type="button" id="reset-button" class="button" @click="ticketsStore.resetTicket()">RESET</button>
             <button type="submit" id="submit-button" class="button" @click.prevent="ticketsStore.createTicket(ticketsStore.ticketToPost)">CREATE</button>
         </div>
     </form>

@@ -12,6 +12,7 @@ export const useTicketsStore = defineStore('tickets', () => {
   const problem_types: String[] = reactive(["Problem with Skynet", "Problem with T-800", "Problem with T-1000", "Problem with T-X", "Problem with T-1", "Problem with T-600", "Other"])
   let selectedProblem = ref<string>("")
   let newTicketDescription = ref<string>("")
+  let selectedTicket = reactive<any>({})
   let ticketToPost = reactive({
     problem_type: ref(""),
     description: ref(""),
@@ -34,10 +35,16 @@ export const useTicketsStore = defineStore('tickets', () => {
     alert ("Ticket is created succesfully")
   }
 
+  async function updateTicket(this: any, id: number, data: Object) {
+    this.tickets = await service.update(id, data)
+    resetTicket()
+    alert ("Ticket is updated succesfully")
+  }
+
   function resetTicket() {
     ticketToPost.problem_type = ''
     ticketToPost.description = ''
 }
 
-  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket }
+  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket, updateTicket, resetTicket, selectedTicket }
 })
