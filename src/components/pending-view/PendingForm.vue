@@ -42,8 +42,8 @@ setUserId()
         <h2>SELECT A TICKET</h2>
 
         <div id="select-ticket-div">
-            <select id="select-ticket" v-model="ticketsStore.selectedTicket" required>
-                <option id="ticket-not-selected" value=""></option>
+            <select v-model="ticketsStore.selectedTicket" required>
+                <option value=""></option>
                 <PendingTicketOption v-for="(ticket, index) in ticketsStore.pendingTickets" :ticket="ticket"
                     :index="index" />
             </select>
