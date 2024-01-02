@@ -27,10 +27,10 @@ function setAsResolved() {
         ticketsStore.selectedTicket.status = "resolved"
         ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)
     }
-    
+
 }
 
-function setUserId () {
+function setUserId() {
     ticketsStore.ticketToPost.userId = usersStore.activeUserIndex + 1
 }
 
@@ -44,7 +44,8 @@ setUserId()
         <div id="select-ticket-div">
             <select id="select-ticket" v-model="ticketsStore.selectedTicket" required>
                 <option id="ticket-not-selected" value=""></option>
-                <PendingTicketOption v-for="(ticket, index) in ticketsStore.pendingTickets" :ticket="ticket" :index="index"/>
+                <PendingTicketOption v-for="(ticket, index) in ticketsStore.pendingTickets" :ticket="ticket"
+                    :index="index" />
             </select>
         </div>
 
@@ -56,13 +57,18 @@ setUserId()
             <p>{{ ticketsStore.selectedTicket.description }}</p>
         </div>
 
-        <h2 id="mark-as">MARK AS:</h2>
+        <div id="mark-div">
+            <h2 id="mark-as">MARK AS:</h2>
 
-        <div id="buttons-div">
-            <button type="button" id="set-not-resolved" class="button" @click.prevent="setAsNotResolved()">NOT RESOLVED</button>
+            <div id="buttons-div">
+                <button type="button" id="set-not-resolved" class="button" @click.prevent="setAsNotResolved()">NOT
+                    RESOLVED</button>
 
-            <button type="button" id="set-resolved" class="button" @click.prevent="setAsResolved()">RESOLVED</button>
+                <button type="button" id="set-resolved" class="button" @click.prevent="setAsResolved()">RESOLVED</button>
+            </div>
         </div>
+
+
     </form>
 </template>
 
@@ -131,9 +137,19 @@ select {
     background-size: 2em auto, 100%;
 }
 
-#buttons-div {
+#mark-div {
+    height: 14%;
     width: 90%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#buttons-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -166,6 +182,11 @@ button {
         background-size: 1.5em auto, 100%;
     }
 
+    #problem-div {
+        height: 8%;
+        // font-size: 1vmax;
+    }
+
     #description-div {
         height: 30%;
         padding: 5px;
@@ -174,15 +195,21 @@ button {
         overflow-y: auto;
     }
 
-    #buttons-div {
+    #mark-div {
+        flex-direction: row;
         justify-content: flex-end;
     }
 
+    #buttons-div {
+        justify-content: space-between;
+        width: 37%;
+        margin-left: 5%;
+    }
+
     button {
-        width: 6vmax;
+        width: 8vmax;
         height: 1.5vmax;
         font-size: 0.8vmax;
-        margin-left: 6%;
     }
 }
 </style>
