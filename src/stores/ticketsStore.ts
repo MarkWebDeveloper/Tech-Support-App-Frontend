@@ -17,12 +17,6 @@ export const useTicketsStore = defineStore('tickets', () => {
     description: ref(""),
     status: ref("pending"),
     userId: ref()
-
-    // constructor (problem_type: string, description: string, status: string) {
-    //   this.problem_type = problem_type
-    //   this.description = description
-    //   this.status = status
-    // }
   })
 
   async function setTickets(this: any) {
@@ -36,8 +30,14 @@ export const useTicketsStore = defineStore('tickets', () => {
 
   async function createTicket(this: any, data: Object) {
     this.tickets = await service.create(data)
+    resetTicket()
     alert ("Ticket is created succesfully")
   }
+
+  function resetTicket() {
+    ticketToPost.problem_type = ''
+    ticketToPost.description = ''
+}
 
   return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket }
 })
