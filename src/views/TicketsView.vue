@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Pagination from '@/components/tickets-view/Pagination.vue';
 import TicketsMiddleSection from '@/components/tickets-view/TicketsMiddleSection.vue';
 import TicketsMobileTopSection from '@/components/tickets-view/TicketsMobileTopSection.vue';
 import UserRepository from '@/repositories/userRepository';
@@ -52,6 +53,8 @@ headerStore.checkUserType(userStore.users[userStore.activeUserIndex])
 
         <TicketsMiddleSection />
 
+        <Pagination />
+
     </main>
 </template>
 
@@ -63,10 +66,14 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 @media only screen and (min-width: 768px) {
+    main {
+        justify-content: center;
+    }
+
     #mobile-top-section {
         display: none;
     }
