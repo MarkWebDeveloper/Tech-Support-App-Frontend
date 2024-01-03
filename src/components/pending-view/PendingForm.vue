@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { useTicketsStore } from '@/stores/ticketsStore'
-import { useRoute, useRouter } from 'vue-router'
 import { useUsersStore } from '@/stores/usersStore'
 import PendingTicketOption from './PendingTicketOption.vue';
-import { reactive, ref } from 'vue';
-
-const route = useRoute()
-const router = useRouter()
 
 const ticketsStore = useTicketsStore()
 const usersStore = useUsersStore()

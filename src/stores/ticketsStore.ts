@@ -9,6 +9,7 @@ export const useTicketsStore = defineStore('tickets', () => {
 
   let tickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([]); 
   let pendingTickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([]); 
+  let resolvedTickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([]); 
   let isLoaded = ref(false)
   const problem_types: String[] = reactive(["Problem with Skynet", "Problem with T-800", "Problem with T-1000", "Problem with T-X", "Problem with T-1", "Problem with T-600", "Other"])
   let selectedProblem = ref<string>("")
@@ -47,5 +48,30 @@ export const useTicketsStore = defineStore('tickets', () => {
     ticketToPost.description = ''
 }
 
-  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket, updateTicket, resetTicket, selectedTicket, pendingTickets }
+function convertTimestamp(timestamp: any) {
+  let d = new Date(timestamp),
+      yyyy = d.getFullYear(),
+      mm = ('0' + (d.getMonth() + 1)).slice(-2),
+      dd = ('0' + d.getDate()).slice(-2),  
+      hh = d.getHours(),
+      h = hh,
+      min = ('0' + d.getMinutes()).slice(-2),
+      ampm = 'AM',
+      time;
+
+  if (hh > 12) {
+      h = hh - 12;
+      ampm = 'PM';
+  } else if (hh === 12) {
+      h = 12;
+      ampm = 'PM';
+  } else if (hh == 0) {
+      h = 12;
+  }
+
+  time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+  return time;
+}
+
+  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket, updateTicket, resetTicket, selectedTicket, pendingTickets, resolvedTickets, convertTimestamp }
 })
