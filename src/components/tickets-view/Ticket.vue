@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Ticket from '@/models/ticket';
 import { useTicketsStore } from '@/stores/ticketsStore';
 import { useUsersStore } from '@/stores/usersStore';
 
@@ -123,7 +122,7 @@ button {
 
     #ticket-container {
         width: 95%;
-        min-height: 25%;
+        // min-height: 25%;
     }
 
     #ticket-number {
@@ -157,25 +156,24 @@ button {
         text-wrap: wrap;
         font-family: 'VT323', monospace;
         overflow-y: auto;
-        font-size: 1vmax;
-        line-height: 1.25vmax;
+        font-size: 1.5vmax;
+        line-height: 2vmax;
     }
 
     #status-container {
-        display: flex;
-        font-family: "Cyberdyne Halftone";
-        font-style: italic;
         font-size: 0.8vmax;
-        margin-left: auto;
     }
 
-    #status {
+    .current-status {
         color: white;
-        margin-right: 1vmax;
     }
 
-    #current-status {
+    .resolved {
         color: $text-green;
+    }
+
+    .not_resolved {
+        color: $base-red;
     }
 }
 </style>
