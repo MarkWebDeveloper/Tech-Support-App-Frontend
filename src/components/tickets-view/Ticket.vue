@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Ticket from '@/models/ticket';
 import { useTicketsStore } from '@/stores/ticketsStore';
 import { useUsersStore } from '@/stores/usersStore';
 
@@ -17,6 +18,9 @@ const props = defineProps({
 function deleteFromSortedTickets(index: number) {
     userStore.usersSortedTickets.splice(index, 1)
   }
+
+  let isResolved = props.ticket.status == "resolved"
+  let isNotResolved = props.ticket.status == "not resolved"
 </script>
 
 <template>
@@ -30,7 +34,7 @@ function deleteFromSortedTickets(index: number) {
         <p id="problem-description">{{ ticket.description }}</p>
         <div id="status-container">
             <h4 id="status">STATUS:</h4>
-            <h4 id="current-status">{{ ticket.status }}</h4>
+            <h4 id="current-status" class="current-status" :class="{ resolved: isResolved, not_resolved: isNotResolved }">{{ ticket.status }}</h4>
         </div>
     </div>
 </template>
@@ -103,8 +107,16 @@ button {
     margin-right: 1vmax;
 }
 
-#current-status {
+.current-status {
+    color: white;
+}
+
+.resolved {
     color: $text-green;
+}
+
+.not_resolved {
+    color: $base-red;
 }
 
 @media only screen and (min-width: 768px) {
