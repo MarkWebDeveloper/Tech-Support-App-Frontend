@@ -35,7 +35,7 @@ onBeforeMount(async () => {
     userStore.usersSortedTickets = userStore.users[userStore.activeUserIndex].tickets.sort(sort_by_id())
 
     pageStore.ticketsCount = userStore.usersSortedTickets.length
-    pageStore.pagesCount = pageStore.ticketsCount / 2;
+    pageStore.pagesCount = Math.round(pageStore.ticketsCount / 2);
     console.log(pageStore.ticketsCount, pageStore.pagesCount)
 })
 

@@ -6,7 +6,7 @@ export const usePaginationStore = defineStore('pagination', () => {
   const usersStore = useUsersStore()
 
   let ticketsCount = ref<number>(usersStore.usersSortedTickets.length)
-  let pagesCount = ref<number>(ticketsCount.value / 2)
+  let pagesCount = ref<number>(Math.round(ticketsCount.value / 2))
   let pageNumber = ref<number>(1)
   let minCount = ref<number>(0)
   let maxCount = ref<number>(2)
@@ -46,9 +46,15 @@ export const usePaginationStore = defineStore('pagination', () => {
   }
 
   function GoToLastPage() {
-    maxCount.value = usersStore.usersSortedTickets.length
-    minCount.value = maxCount.value - 2
-    pageNumber.value = pagesCount.value
+    if (usersStore.usersSortedTickets.length % 2 == 0) {
+      maxCount.value = usersStore.usersSortedTickets.length
+      minCount.value = maxCount.value - 2
+      pageNumber.value = pagesCount.value
+    } else if (usersStore.usersSortedTickets.length % 2 != 0) {
+      maxCount.value = usersStore.usersSortedTickets.length
+      minCount.value = maxCount.value - 1
+      pageNumber.value = pagesCount.value
+    }
   }
 
   return { ticketsCount, pagesCount, pageNumber, paginatedTickets, minCount, maxCount, isBeginning, isEnd, GoToFirstPage, GoToLastPage, GoToNextPage, GoToPrevPage }
