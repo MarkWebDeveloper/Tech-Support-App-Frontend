@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import Pagination from '@/components/tickets-view/Pagination.vue';
+import TicketsPagination from '@/components/tickets-view/TicketsPagination.vue';
 import TicketsMiddleSection from '@/components/tickets-view/TicketsMiddleSection.vue';
 import TicketsMobileTopSection from '@/components/tickets-view/TicketsMobileTopSection.vue';
 import UserRepository from '@/repositories/userRepository';
 import UserService from '@/services/userService';
 import { useHeaderStore } from '@/stores/headerStore';
+import { usePaginationStore } from '@/stores/paginationStore';
 import { useUsersStore } from '@/stores/usersStore';
 import { onBeforeMount } from 'vue';
 
 const userStore = useUsersStore()
 const headerStore = useHeaderStore()
+const pageStore = usePaginationStore()
 
 function sort_by_id() {
     return function (elem1: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }, elem2: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }) {
@@ -29,7 +31,12 @@ onBeforeMount(async () => {
     userStore.isLoaded = false
     userStore.users = await service.index()
     userStore.isLoaded = true
+
     userStore.usersSortedTickets = userStore.users[userStore.activeUserIndex].tickets.sort(sort_by_id())
+
+    pageStore.ticketsCount = userStore.usersSortedTickets.length
+    pageStore.pagesCount = pageStore.ticketsCount / 2;
+    console.log(pageStore.ticketsCount, pageStore.pagesCount)
 })
 
 function checkIfAuthenticated() {
@@ -53,7 +60,7 @@ headerStore.checkUserType(userStore.users[userStore.activeUserIndex])
 
         <TicketsMiddleSection />
 
-        <Pagination />
+        <TicketsPagination />
 
     </main>
 </template>

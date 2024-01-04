@@ -1,14 +1,19 @@
 <script setup lang="ts">
+import { usePaginationStore } from '@/stores/paginationStore';
+import { useUsersStore } from '@/stores/usersStore';
+
+const usersStore = useUsersStore()
+const pageStore = usePaginationStore()
 
 </script>
 
 <template>
    <div id="pagination-container">
-    <button type="button" class="button" id="first">FIRST</button>
-    <button type="button" class="button" id="prev">PREV</button>
-    <p id="page-number">1</p>
-    <button type="button" class="button" id="next">NEXT</button>
-    <button type="button" class="button" id="last">LAST</button>
+    <button type="button" class="button" id="first" :class="{ deactivated: pageStore.isBeginning }">FIRST</button>
+    <button type="button" class="button" id="prev" :class="{ deactivated: pageStore.isBeginning }" @click="pageStore.prevPage()">PREV</button>
+    <p id="page-number">{{ pageStore.pageNumber }}</p>
+    <button type="button" class="button" id="next" :class="{ deactivated: pageStore.isEnd }" @click="pageStore.nextPage()">NEXT</button>
+    <button type="button" class="button" id="last" :class="{ deactivated: pageStore.isEnd }">LAST</button>
    </div>
 </template>
 
@@ -36,6 +41,11 @@
     color: white;
     width: 4vmax;
     text-align: center;
+}
+
+.deactivated {
+    color: gray;
+    cursor: default;
 }
 
 @media only screen and (min-width: 768px) {

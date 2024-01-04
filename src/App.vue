@@ -4,10 +4,12 @@ import Header from './components/global/Header.vue';
 import { useUsersStore } from './stores/usersStore';
 import { useHeaderStore } from './stores/headerStore';
 import { useTicketsStore } from './stores/ticketsStore';
+import { usePaginationStore } from './stores/paginationStore';
 
 const usersStore = useUsersStore()
 const headerStore = useHeaderStore()
 const ticketsStore = useTicketsStore()
+const pageStore = usePaginationStore()
 
 const settingUsers = async () => { await usersStore.setUsers() }
 settingUsers()
