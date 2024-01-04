@@ -36,7 +36,6 @@ onBeforeMount(async () => {
 
     pageStore.ticketsCount = userStore.usersSortedTickets.length
     pageStore.pagesCount = Math.round(pageStore.ticketsCount / 2);
-    console.log(pageStore.ticketsCount, pageStore.pagesCount)
 })
 
 function checkIfAuthenticated() {

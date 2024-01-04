@@ -31,7 +31,6 @@ onBeforeMount(async () => {
     userStore.users = await service.index()
     userStore.isLoaded = true
     let filteredTickets = ticketsStore.tickets.filter(element => element.status == "pending")
-    console.log(filteredTickets)
     ticketsStore.pendingTickets = filteredTickets.sort(sort_by_id())
 })
 

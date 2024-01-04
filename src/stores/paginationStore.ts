@@ -10,8 +10,6 @@ export const usePaginationStore = defineStore('pagination', () => {
   let pageNumber = ref<number>(1)
   let minCount = ref<number>(0)
   let maxCount = ref<number>(2)
-  let isBeginning = ref<boolean>(true)
-  let isEnd = ref<boolean>(false)
 
   let paginatedTickets = computed(() => usersStore.usersSortedTickets.slice(minCount.value, maxCount.value))
 
@@ -57,5 +55,5 @@ export const usePaginationStore = defineStore('pagination', () => {
     }
   }
 
-  return { ticketsCount, pagesCount, pageNumber, paginatedTickets, minCount, maxCount, isBeginning, isEnd, GoToFirstPage, GoToLastPage, GoToNextPage, GoToPrevPage }
+  return { ticketsCount, pagesCount, pageNumber, paginatedTickets, minCount, maxCount, GoToFirstPage, GoToLastPage, GoToNextPage, GoToPrevPage }
 })
