@@ -9,11 +9,11 @@ const pageStore = usePaginationStore()
 
 <template>
    <div id="pagination-container">
-    <button type="button" class="button" id="first" :class="{ deactivated: pageStore.isBeginning }">FIRST</button>
-    <button type="button" class="button" id="prev" :class="{ deactivated: pageStore.isBeginning }" @click="pageStore.prevPage()">PREV</button>
+    <button type="button" class="button" id="first" :class="{ deactivated: pageStore.isBeginning }" @click="pageStore.GoToFirstPage()">FIRST</button>
+    <button type="button" class="button" id="prev" :class="{ deactivated: pageStore.isBeginning }" @click="pageStore.GoToPrevPage()">PREV</button>
     <p id="page-number">{{ pageStore.pageNumber }}</p>
-    <button type="button" class="button" id="next" :class="{ deactivated: pageStore.isEnd }" @click="pageStore.nextPage()">NEXT</button>
-    <button type="button" class="button" id="last" :class="{ deactivated: pageStore.isEnd }">LAST</button>
+    <button type="button" class="button" id="next" :class="{ deactivated: pageStore.isEnd }" @click="pageStore.GoToNextPage()">NEXT</button>
+    <button type="button" class="button" id="last" :class="{ deactivated: pageStore.isEnd }" @click="pageStore.GoToLastPage()">LAST</button>
    </div>
 </template>
 
