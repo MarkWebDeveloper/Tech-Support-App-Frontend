@@ -18,6 +18,18 @@ const props = defineProps({
     }
 })
 
+function sort_by_id() {
+    return function (elem1: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }, elem2: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }) {
+        if (elem1.id < elem2.id) {
+            return -1;
+        } else if (elem1.id > elem2.id) {
+            return 1;
+        } else {
+            return 0;
+        }
+    };
+}
+
 function deleteFromSortedTickets(index: number) {
     userStore.usersSortedTickets.splice(index, 1)
 }
