@@ -1,25 +1,37 @@
 <script setup lang="ts">
+import { usePaginationStore } from '@/stores/paginationStore';
 import { useTicketsStore } from '@/stores/ticketsStore';
 import { useUsersStore } from '@/stores/usersStore';
 
 const userStore = useUsersStore()
 const ticketStore = useTicketsStore()
+const pageStore = usePaginationStore()
 
 const props = defineProps({
-  ticket: {
-    type: Object,
-    required: true},
-  index: {
-    type: Number,
-    required: true}
+    ticket: {
+        type: Object,
+        required: true
+    },
+    index: {
+        type: Number,
+        required: true
+    }
 })
 
 function deleteFromSortedTickets(index: number) {
     userStore.usersSortedTickets.splice(index, 1)
-  }
+}
 
-  let isResolved = props.ticket.status == "resolved"
-  let isNotResolved = props.ticket.status == "not resolved"
+function adaptPagesToDelete() {
+    if (userStore.usersSortedTickets.length % 2 != 0) {
+        pageStore.maxCount -= 1
+    } else if (userStore.usersSortedTickets.length % 2 == 0) {
+        pageStore.minCount -= 2
+        pageStore.maxCount -= 1
+        pageStore.pageNumber -= 1
+    }
+    console.log(pageStore.minCount, pageStore.maxCount)
+}
 </script>
 
 <template>
@@ -27,13 +39,13 @@ function deleteFromSortedTickets(index: number) {
         <div id="number_delete_container">
             <p id="ticket-number">#{{ ticket.id }}</p>
             <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>
-            <button type="button" id="delete-button" @click.prevent="deleteFromSortedTickets(index), ticketStore.deleteTicket(ticket.id)">DELETE</button>
+            <button type="button" id="delete-button" @click.prevent="deleteFromSortedTickets(index), ticketStore.deleteTicket(ticket.id), adaptPagesToDelete()">DELETE</button>
         </div>
         <h3 id="problem-type-mobile">{{ ticket.problem_type }}</h3>
         <p id="problem-description">{{ ticket.description }}</p>
         <div id="status-container">
             <h4 id="status">STATUS:</h4>
-            <h4 id="current-status" class="current-status" :class="{ resolved: isResolved, not_resolved: isNotResolved }">{{ ticket.status }}</h4>
+            <h4 id="current-status" class="current-status" :class="{ resolved: props.ticket.status == 'resolved', not_resolved: props.ticket.status == 'not resolved' }">{{ ticket.status }}</h4>
         </div>
     </div>
 </template>

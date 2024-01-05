@@ -55,5 +55,15 @@ export const usePaginationStore = defineStore('pagination', () => {
     }
   }
 
-  return { ticketsCount, pagesCount, pageNumber, paginatedTickets, minCount, maxCount, GoToFirstPage, GoToLastPage, GoToNextPage, GoToPrevPage }
+  function adaptPagesToDelete() {
+    if (usersStore.usersSortedTickets.length % 2 == 0 || usersStore.usersSortedTickets.length == 1) {
+      maxCount.value -= 1
+    } else if (usersStore.usersSortedTickets.length % 2 != 0 || usersStore.usersSortedTickets.length != 1) {
+      minCount.value -= 2
+      maxCount.value -= 1
+      pageNumber.value = pagesCount.value
+    }
+  }
+
+  return { ticketsCount, pagesCount, pageNumber, paginatedTickets, minCount, maxCount, GoToFirstPage, GoToLastPage, GoToNextPage, GoToPrevPage, adaptPagesToDelete }
 })
