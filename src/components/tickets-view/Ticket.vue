@@ -44,14 +44,16 @@ function adaptPagesToDelete() {
     }
     console.log(pageStore.minCount, pageStore.maxCount)
 }
+
+let strIndex: string = `${props.index}`
 </script>
 
 <template>
-    <div id="ticket-container">
+    <div id="ticket-container" :class="strIndex">
         <div id="number_delete_container">
             <p id="ticket-number">#{{ ticket.id }}</p>
             <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>
-            <button type="button" id="delete-button" @click.prevent="deleteFromSortedTickets(index), ticketStore.deleteTicket(ticket.id), adaptPagesToDelete()">DELETE</button>
+            <button type="button" id="delete-button" @click.prevent="deleteFromSortedTickets(userStore.usersSortedTickets.findIndex((element) => element.id == ticket.id)), ticketStore.deleteTicket(ticket.id), adaptPagesToDelete()">DELETE</button>
         </div>
         <h3 id="problem-type-mobile">{{ ticket.problem_type }}</h3>
         <p id="problem-description">{{ ticket.description }}</p>
