@@ -28,6 +28,13 @@ function setUserId () {
 }
 
 setUserId()
+
+function handleChange(e: any) {
+    ticketsStore.selectedTicket = usersStore.usersPendingTickets[e.target.value]
+    ticketsStore.ticketToPost.problem_type = ticketsStore.selectedTicket.problem_type
+    ticketsStore.ticketToPost.description = ticketsStore.selectedTicket.description
+    console.log(console.log(e.target.value), ticketsStore.selectedTicket)
+}
 </script>
 
 <template>
@@ -35,7 +42,7 @@ setUserId()
         <h2>SELECT A TICKET</h2>
 
         <div id="select-ticket-div">
-            <select id="select-ticket" v-model="ticketsStore.selectedTicket" required>
+            <select id="select-ticket" @change="handleChange" required>
                 <option id="ticket-not-selected" value=""></option>
                 <TicketOption v-for="(ticket, index) in usersStore.usersPendingTickets" :ticket="ticket" :index="index"/>
             </select>

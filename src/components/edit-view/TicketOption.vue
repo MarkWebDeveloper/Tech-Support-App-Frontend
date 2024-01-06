@@ -11,10 +11,12 @@ const props = defineProps({
     type: Number,
     required: true}
 })
+
+
 </script>
 
 <template>
-   <option :value="ticket">#{{ ticket.id }} {{ ticket.problem_type }} {{ ticket.description.substr(0, 30) }}...</option>
+   <option :value="index">#{{ ticket.id }} {{ ticket.problem_type }} {{ ticket.description.substr(0, 30) }}...</option>
 </template>
 
 <style scoped lang="scss">
