@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import ResolvedMobileTopSection from '@/components/resolved-view/ResolvedMobileTopSection.vue';
+import ResolvedPagination from '@/components/resolved-view/ResolvedPagination.vue';
 import ResolvedTicketsMiddleSection from '@/components/resolved-view/ResolvedTicketsMiddleSection.vue';
 import UserRepository from '@/repositories/userRepository';
 import UserService from '@/services/userService';
+import { useResolvedPaginationStore } from '@/stores/resolvedPaginationStore';
 import { useTicketsStore } from '@/stores/ticketsStore';
 import { useUsersStore } from '@/stores/usersStore';
 import { onBeforeMount } from 'vue';
 
 const userStore = useUsersStore()
 const ticketsStore = useTicketsStore()
+const pageStore = useResolvedPaginationStore()
 
 function sort_by_id() {
     return function (elem1: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }, elem2: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }) {
@@ -31,6 +34,8 @@ onBeforeMount(async () => {
     let filteredTickets = ticketsStore.tickets.filter(element => element.status == "resolved" || element.status == "not resolved")
 
     ticketsStore.resolvedTickets = filteredTickets.sort(sort_by_id())
+    pageStore.ticketsCount = ticketsStore.resolvedTickets.length
+    pageStore.pagesCount = Math.round(pageStore.ticketsCount / 2);
 })
 
 </script>
@@ -40,6 +45,8 @@ onBeforeMount(async () => {
     <ResolvedMobileTopSection id="mobile-top-section"/>
 
     <ResolvedTicketsMiddleSection />
+
+    <ResolvedPagination />
   </main>
 </template>
   

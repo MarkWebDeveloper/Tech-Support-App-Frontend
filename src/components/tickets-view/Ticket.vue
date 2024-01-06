@@ -18,18 +18,6 @@ const props = defineProps({
     }
 })
 
-function sort_by_id() {
-    return function (elem1: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }, elem2: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }) {
-        if (elem1.id < elem2.id) {
-            return -1;
-        } else if (elem1.id > elem2.id) {
-            return 1;
-        } else {
-            return 0;
-        }
-    };
-}
-
 function deleteFromSortedTickets(index: number) {
     userStore.usersSortedTickets.splice(index, 1)
 }
@@ -42,14 +30,11 @@ function adaptPagesToDelete() {
         pageStore.maxCount -= 1
         pageStore.pageNumber -= 1
     }
-    console.log(pageStore.minCount, pageStore.maxCount)
 }
-
-let strIndex: string = `${props.index}`
 </script>
 
 <template>
-    <div id="ticket-container" :class="strIndex">
+    <div id="ticket-container">
         <div id="number_delete_container">
             <p id="ticket-number">#{{ ticket.id }}</p>
             <h3 id="problem-type-desktop">{{ ticket.problem_type }}</h3>

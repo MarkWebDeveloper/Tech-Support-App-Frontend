@@ -13,9 +13,6 @@ const props = defineProps({
     type: Number,
     required: true}
 })
-
-let isResolved = props.ticket.status == "resolved"
-let isNotResolved = props.ticket.status == "not resolved"
 </script>
 
 <template>
@@ -31,7 +28,7 @@ let isNotResolved = props.ticket.status == "not resolved"
             <p id="finalized-date">FINALIZED: {{ ticketStore.convertTimestamp(ticket.modified_date) }}</p>
             <div id="status-container">
                 <h4 id="status">STATUS:</h4>
-                <h4 id="current-status" class="current-status" :class="{ resolved: isResolved, not_resolved: isNotResolved }">{{ ticket.status }}</h4>
+                <h4 id="current-status" class="current-status" :class="{ resolved: props.ticket.status == 'resolved', not_resolved: props.ticket.status == 'not resolved' }">{{ ticket.status }}</h4>
             </div>
         </div>
     </div>

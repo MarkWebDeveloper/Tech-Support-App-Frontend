@@ -2,8 +2,9 @@
 import { usePaginationStore } from '@/stores/paginationStore';
 import Ticket from './Ticket.vue';
 import { useUsersStore } from '@/stores/usersStore';
+import { useResolvedPaginationStore } from '@/stores/resolvedPaginationStore';
 const userStore = useUsersStore()
-const pageStore = usePaginationStore()
+const pageStore = useResolvedPaginationStore()
 
 </script>
 
