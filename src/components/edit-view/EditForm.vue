@@ -37,7 +37,7 @@ setUserId()
         <div id="select-ticket-div">
             <select id="select-ticket" v-model="ticketsStore.selectedTicket" required>
                 <option id="ticket-not-selected" value=""></option>
-                <TicketOption v-for="(ticket, index) in usersStore.usersSortedTickets" :ticket="ticket" :index="index"/>
+                <TicketOption v-for="(ticket, index) in usersStore.usersPendingTickets" :ticket="ticket" :index="index"/>
             </select>
         </div>
 

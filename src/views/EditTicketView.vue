@@ -1,8 +1,35 @@
 <script setup lang="ts">
 import EditMiddleSection from '@/components/edit-view/EditMiddleSection.vue';
 import EditMobileTopSection from '@/components/edit-view/EditMobileTopSection.vue';
+import UserRepository from '@/repositories/userRepository';
+import UserService from '@/services/userService';
+import { useUsersStore } from '@/stores/usersStore';
+import { onBeforeMount } from 'vue';
 
+const userStore = useUsersStore()
 
+function sort_by_id() {
+  return function (elem1: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }, elem2: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }) {
+    if (elem1.id < elem2.id) {
+      return -1;
+    } else if (elem1.id > elem2.id) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+}
+
+onBeforeMount(async () => {
+  const repository = new UserRepository
+  const service = new UserService(repository)
+  userStore.isLoaded = false
+  userStore.users = await service.index()
+  userStore.isLoaded = true
+
+  userStore.usersSortedTickets = userStore.users[userStore.activeUserIndex].tickets.sort(sort_by_id())
+  userStore.usersPendingTickets = userStore.usersSortedTickets.filter((element) => element.status == "pending")
+})
 </script>
 
 <template>

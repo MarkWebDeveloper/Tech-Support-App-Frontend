@@ -14,11 +14,12 @@ export const useUsersStore = defineStore('users', () => {
   const isAuthenticated = ref(false)
   let activeUserIndex = ref();
   let usersSortedTickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([])
+  let usersPendingTickets: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }[] = reactive([])
 
   async function setUsers(this: any) {
     this.users = await service.index()
     isLoaded.value = true
   }
 
-  return { users, isLoaded, setUsers, isAuthenticated, activeUserIndex, usersSortedTickets }
+  return { users, isLoaded, setUsers, isAuthenticated, activeUserIndex, usersSortedTickets, usersPendingTickets }
 })
