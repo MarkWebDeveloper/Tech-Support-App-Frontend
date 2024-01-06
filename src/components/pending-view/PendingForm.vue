@@ -7,20 +7,20 @@ const ticketsStore = useTicketsStore()
 const usersStore = useUsersStore()
 
 function setAsNotResolved() {
-    if (Object.keys(ticketsStore.selectedTicket).length === 0) {
+    if (Object.keys(ticketsStore.selectedPendingTicket).length === 0) {
         alert("Please, select a ticket")
     } else {
-        ticketsStore.selectedTicket.status = "not resolved"
-        ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)
+        ticketsStore.selectedPendingTicket.status = "not resolved"
+        ticketsStore.updateTicket(ticketsStore.selectedPendingTicket.id, ticketsStore.selectedPendingTicket)
     }
 }
 
 function setAsResolved() {
-    if (Object.keys(ticketsStore.selectedTicket).length === 0) {
+    if (Object.keys(ticketsStore.selectedPendingTicket).length === 0) {
         alert("Please, select a ticket")
     } else {
-        ticketsStore.selectedTicket.status = "resolved"
-        ticketsStore.updateTicket(ticketsStore.selectedTicket.id, ticketsStore.selectedTicket)
+        ticketsStore.selectedPendingTicket.status = "resolved"
+        ticketsStore.updateTicket(ticketsStore.selectedPendingTicket.id, ticketsStore.selectedPendingTicket)
     }
 
 }
@@ -37,7 +37,7 @@ setUserId()
         <h2>SELECT A TICKET</h2>
 
         <div id="select-ticket-div">
-            <select v-model="ticketsStore.selectedTicket" required>
+            <select v-model="ticketsStore.selectedPendingTicket" required>
                 <option value=""></option>
                 <PendingTicketOption v-for="(ticket, index) in ticketsStore.pendingTickets" :ticket="ticket"
                     :index="index" />
@@ -45,11 +45,11 @@ setUserId()
         </div>
 
         <div id="problem-div">
-            <p>{{ ticketsStore.selectedTicket.problem_type }}</p>
+            <p>{{ ticketsStore.selectedPendingTicket.problem_type }}</p>
         </div>
 
         <div id="description-div">
-            <p>{{ ticketsStore.selectedTicket.description }}</p>
+            <p>{{ ticketsStore.selectedPendingTicket.description }}</p>
         </div>
 
         <div id="mark-div">

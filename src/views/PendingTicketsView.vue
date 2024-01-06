@@ -4,8 +4,6 @@ import PendingMiddleSection from '@/components/pending-view/PendingMiddleSection
 import { useHeaderStore } from '@/stores/headerStore';
 import { useUsersStore } from '@/stores/usersStore';
 import { useTicketsStore } from '@/stores/ticketsStore';
-import UserRepository from '@/repositories/userRepository';
-import UserService from '@/services/userService';
 import { onBeforeMount } from 'vue';
 import TicketRepository from '@/repositories/ticketRepository';
 import TicketService from '@/services/ticketService';
@@ -36,14 +34,22 @@ onBeforeMount(async () => {
 })
 
 function checkIfAuthenticated() {
-    if(userStore.isAuthenticated) {
-        if(userStore.isAuthenticated == true) {
+    if (userStore.isAuthenticated) {
+        if (userStore.isAuthenticated == true) {
             headerStore.showButton = true
         } else {
             headerStore.showButton = false
         }
     }
 }
+
+function emptySelectedTicket() {
+    for (let key in ticketsStore.selectedPendingTicket) {
+        delete ticketsStore.selectedPendingTicket[key];
+    }
+}
+
+emptySelectedTicket()
 
 checkIfAuthenticated()
 headerStore.checkUserType(userStore.users[userStore.activeUserIndex])

@@ -2,7 +2,9 @@
 import ResolvedMobileTopSection from '@/components/resolved-view/ResolvedMobileTopSection.vue';
 import ResolvedPagination from '@/components/resolved-view/ResolvedPagination.vue';
 import ResolvedTicketsMiddleSection from '@/components/resolved-view/ResolvedTicketsMiddleSection.vue';
+import TicketRepository from '@/repositories/ticketRepository';
 import UserRepository from '@/repositories/userRepository';
+import TicketService from '@/services/ticketService';
 import UserService from '@/services/userService';
 import { useResolvedPaginationStore } from '@/stores/resolvedPaginationStore';
 import { useTicketsStore } from '@/stores/ticketsStore';
@@ -26,11 +28,10 @@ function sort_by_id() {
 }
 
 onBeforeMount(async () => {
-    const repository = new UserRepository
-    const service = new UserService(repository)
-    userStore.isLoaded = false
-    userStore.users = await service.index()
-    userStore.isLoaded = true
+    const repository = new TicketRepository
+    const service = new TicketService(repository)
+    ticketsStore.tickets = await service.index()
+    
     let filteredTickets = ticketsStore.tickets.filter(element => element.status == "resolved" || element.status == "not resolved")
 
     ticketsStore.resolvedTickets = filteredTickets.sort(sort_by_id())

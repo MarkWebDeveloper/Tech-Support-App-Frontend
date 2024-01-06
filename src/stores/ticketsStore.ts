@@ -15,6 +15,7 @@ export const useTicketsStore = defineStore('tickets', () => {
   let selectedProblem = ref<string>("")
   let newTicketDescription = ref<string>("")
   let selectedTicket = reactive<any>({})
+  let selectedPendingTicket = reactive<any>({})
   let ticketToPost = reactive({
     problem_type: ref(""),
     description: ref(""),
@@ -73,5 +74,5 @@ function convertTimestamp(timestamp: any) {
   return time;
 }
 
-  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket, updateTicket, resetTicket, selectedTicket, pendingTickets, resolvedTickets, convertTimestamp }
+  return { tickets, isLoaded, setTickets, deleteTicket, problem_types, selectedProblem, newTicketDescription, ticketToPost, createTicket, updateTicket, resetTicket, selectedTicket, pendingTickets, resolvedTickets, convertTimestamp, selectedPendingTicket }
 })
