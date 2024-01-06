@@ -4,12 +4,27 @@ import { useRoute, useRouter } from 'vue-router'
 import { useUsersStore } from '@/stores/usersStore'
 import TicketOption from './TicketOption.vue';
 import ProblemOption from './../global/ProblemOption.vue';
+import UserRepository from '@/repositories/userRepository';
+import UserService from '@/services/userService';
+import { onUpdated } from 'vue';
 
 const route = useRoute()
 const router = useRouter()
 
 const ticketsStore = useTicketsStore()
 const usersStore = useUsersStore()
+
+function sort_by_id() {
+    return function (elem1: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }, elem2: { id: number, created_date: string, modified_date: string, problem_type: string, description: string, status: string }) {
+        if (elem1.id < elem2.id) {
+            return -1;
+        } else if (elem1.id > elem2.id) {
+            return 1;
+        } else {
+            return 0;
+        }
+    };
+}
 
 function cancelTicketEditing() {
     ticketsStore.selectedProblem = ''
@@ -23,7 +38,7 @@ function resetTicket() {
     ticketsStore.ticketToPost.description = ''
 }
 
-function setUserId () {
+function setUserId() {
     ticketsStore.ticketToPost.userId = usersStore.activeUserIndex + 1
 }
 
@@ -35,6 +50,17 @@ function handleChange(e: any) {
     ticketsStore.ticketToPost.description = ticketsStore.selectedTicket.description
     console.log(console.log(e.target.value), ticketsStore.selectedTicket)
 }
+
+onUpdated(async() => {
+    const repository = new UserRepository
+    const service = new UserService(repository)
+    usersStore.isLoaded = false
+    usersStore.users = await service.index()
+    usersStore.isLoaded = true
+
+    usersStore.usersSortedTickets = usersStore.users[usersStore.activeUserIndex].tickets.sort(sort_by_id())
+    usersStore.usersPendingTickets = usersStore.usersSortedTickets.filter((element) => element.status == "pending")
+})
 </script>
 
 <template>
