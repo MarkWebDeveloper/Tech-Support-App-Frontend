@@ -7,6 +7,8 @@ import { useTicketsStore } from '@/stores/ticketsStore';
 import UserRepository from '@/repositories/userRepository';
 import UserService from '@/services/userService';
 import { onBeforeMount } from 'vue';
+import TicketRepository from '@/repositories/ticketRepository';
+import TicketService from '@/services/ticketService';
 
 const userStore = useUsersStore()
 const headerStore = useHeaderStore()
@@ -25,11 +27,10 @@ function sort_by_id() {
 }
 
 onBeforeMount(async () => {
-    const repository = new UserRepository
-    const service = new UserService(repository)
-    userStore.isLoaded = false
-    userStore.users = await service.index()
-    userStore.isLoaded = true
+    const repository = new TicketRepository
+    const service = new TicketService(repository)
+    ticketsStore.tickets = await service.index()
+
     let filteredTickets = ticketsStore.tickets.filter(element => element.status == "pending")
     ticketsStore.pendingTickets = filteredTickets.sort(sort_by_id())
 })
