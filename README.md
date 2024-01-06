@@ -1,6 +1,31 @@
-# Tech-Support-App-Frontend
+# Tech Support App Frontend Project
 
-This template should help get you started developing with Vue 3 in Vite.
+Hi! This is the frontend part of a fake support application based on Terminator universe. This is also my first project with backend. 
+
+The backend part includes my own API made with Java and Spring.
+
+This application gives has 2 types of users - User and Technician. User can create, delete and edit support tickets. The tickets are asociated with the specific user.
+
+The technician can mark pending tickets as resolved or not resolved and also can review the finalized tickets that are sorted by creation date.
+
+## Screenshots
+
+Login View
+
+![Login Screenshot](public/screenshots/1-login-screenshot.png)
+
+Tickets View
+
+![Tickets Screenshot](public/screenshots/2-tickets-screenshot.png)
+
+Create Ticket View
+
+![Alt text](public/screenshots/3-create-ticket-screenshot.png)
+
+## Dev Dependencies
+
+Sass (https://www.npmjs.com/package/sass) <br />
+Scss-Reset (https://www.npmjs.com/package/scss-reset)
 
 ## Recommended IDE Setup
 
