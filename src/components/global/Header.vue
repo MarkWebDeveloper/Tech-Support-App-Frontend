@@ -109,7 +109,7 @@ header {
         font-family: "Cyberdyne";
         font-size: 1.5vmax;
         color: white;
-        margin-right: 2%;
+        margin-right: 4%;
     }
 
     #menu-icon {
