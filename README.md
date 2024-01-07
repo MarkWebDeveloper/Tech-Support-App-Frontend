@@ -8,6 +8,10 @@ This application gives has 2 types of users - User and Technician. User can crea
 
 The technician can mark pending tickets as resolved or not resolved and also can review the finalized tickets that are sorted by creation date.
 
+## Backend link
+
+https://github.com/MarkWebDeveloper/Tech-Support-App-Backend
+
 ## Screenshots
 
 Login View
@@ -69,3 +73,5 @@ npm run build
 ```sh
 npm run test:unit
 ```
+
+### Thank you!
